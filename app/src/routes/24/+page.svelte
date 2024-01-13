@@ -1,16 +1,48 @@
 <script lang="ts">
 	import PostList from '$lib/components/PostList.svelte';
 	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
 
 	let startScrollSnap: HTMLElement;
 	let endScrollSnap: HTMLElement;
+	let scrollAmount: number;
+	let startYBound: number = 200;
+	let endYBound: number = 50;
+
+	onMount(() => {});
+
+	function handleScroll(e: UIEvent) {
+		if (import.meta.env.SSR) return;
+
+		let startY = startScrollSnap.getBoundingClientRect().top;
+		let endY = endScrollSnap.getBoundingClientRect().top;
+
+		console.log(`startY=${startY}; endY=${endY};`);
+
+		const body = document.getElementsByTagName('html')[0];
+
+		if (!body.classList.contains('scrollsnap') && startY < startYBound && endY > endYBound) {
+			console.log('Adding snap');
+			body.classList.add('scrollsnap');
+		}
+		if (body.classList.contains('scrollsnap') && startY > startYBound) {
+			console.log('Removing snap from start');
+			body.classList.remove('scrollsnap');
+		}
+		if (body.classList.contains('scrollsnap') && endY < endYBound) {
+			console.log('Removing snap from end');
+			body.classList.remove('scrollsnap');
+		}
+	}
 </script>
 
 <svelte:head>
 	<title>How I Made A Game</title>
 </svelte:head>
+
+<svelte:window bind:scrollY={scrollAmount} on:scroll={handleScroll} />
 
 <h2 id="project">O Projeto</h2>
 <p>
@@ -26,43 +58,43 @@
 <div class="people">
 	<div bind:this={startScrollSnap} class="person">
 		<img src="/team/rita.png" alt="Rita Fernandes" />
-<div>
-	<h4>Rita Fernandes</h4>
+		<div>
+			<h4>Rita Fernandes</h4>
 			<div>Coordenação, Hardware</div>
 		</div>
-</div>
+	</div>
 	<div class="person">
 		<img src="/team/gabriel.png" alt="Gabriel Neto" />
-<div>
-	<h4>Gabriel Neto</h4>
+		<div>
+			<h4>Gabriel Neto</h4>
 			<div>Deselvolvimento científico</div>
 		</div>
-</div>
+	</div>
 	<div class="person">
 		<img src="/team/guido.png" alt="Guido Rezende" />
-<div>
-	<h4>Guido Rezende</h4>
+		<div>
+			<h4>Guido Rezende</h4>
 			<div>Programação da estação terra</div>
 		</div>
-</div>
+	</div>
 	<div class="person">
 		<img src="/team/levi.png" alt="Levi Gomes" />
-<div>
-	<h4>Levi Gomes</h4>
+		<div>
+			<h4>Levi Gomes</h4>
 			<div>Programação do CanSat</div>
 		</div>
-</div>
+	</div>
 	<div class="person">
 		<img src="/team/miguel.png" alt="Miguel Monteiro" />
-<div>
-	<h4>Miguel Monteiro</h4>
+		<div>
+			<h4>Miguel Monteiro</h4>
 			<div>Paraquedas e estrutura</div>
 		</div>
-</div>
+	</div>
 	<div bind:this={endScrollSnap} class="person">
 		<img src="/team/filipa.png" alt="Filipa Cheng" />
-<div>
-	<h4>Filipa Cheng</h4>
+		<div>
+			<h4>Filipa Cheng</h4>
 			<div>Divulgação</div>
 		</div>
 	</div>
