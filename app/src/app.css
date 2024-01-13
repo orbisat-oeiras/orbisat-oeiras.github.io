@@ -14,7 +14,7 @@
 	}
 
 	body {
-		@apply bg-grey-900 dark:bg-grey-200 text-grey-100 dark:text-grey-900 font-[auto] transition-colors;
+		@apply bg-cansat-cream dark:bg-cansat-grey text-cansat-black dark:text-cansat-cream font-[auto] transition-colors;
 	}
 
 	h1,
@@ -23,7 +23,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply underline decoration-accent-500 font-bold;
+		@apply underline decoration-cansat-accent font-bold;
 	}
 
 	h1 {
@@ -43,7 +43,7 @@
 	}
 
 	a {
-		@apply italic text-accent-500 transition-colors duration-500 underline decoration-[transparent] hover:decoration-accent-500;
+		@apply italic text-cansat-accent transition-colors duration-500 underline decoration-[transparent] hover:decoration-cansat-accent;
 	}
 
 	p {
@@ -57,7 +57,7 @@
 
 @layer components {
 	.btn {
-		@apply bg-accent-500 px-2 py-1 rounded-md text-lg cursor-pointer text-center text-grey-900 not-italic no-underline;
+		@apply bg-cansat-accent px-2 py-1 rounded-md text-lg cursor-pointer text-center text-cansat-cream not-italic no-underline;
 	}
 
 	.tag {
