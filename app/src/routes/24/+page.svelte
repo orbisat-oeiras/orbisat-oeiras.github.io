@@ -9,37 +9,53 @@
 	<title>How I Made A Game</title>
 </svelte:head>
 
-<h1 class="no-underline text-center text-5xl my-6">How I Made A Game</h1>
-<h2>Recent Posts</h2>
+<h2 id="project">O Projeto</h2>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id felis ac odio eleifend dictum
+	ultrices a neque. Vestibulum non diam suscipit, interdum justo eget, volutpat enim. Vivamus
+	porttitor tempor libero, quis accumsan sapien dictum lobortis. Sed commodo luctus nisl eget
+	fringilla. Duis quis sem lacus. Fusce ac luctus orci. In in fringilla elit, nec placerat purus.
+	Nulla molestie nibh vel rutrum vulputate. Aliquam vulputate lectus vel ullamcorper consequat.
+	Pellentesque ligula enim, dignissim id lacinia a, bibendum iaculis nulla. Quisque.
+</p>
+
+<h2 id="team">A Equipa</h2>
+<div>
+	<img src="/team/rita.png" alt="Rita Fernandes" />
+	<h4>Rita Fernandes</h4>
+	<p>Coordenação, Hardware</p>
+</div>
+<div>
+	<img src="/team/gabriel.png" alt="Gabriel Neto" />
+	<h4>Gabriel Neto</h4>
+	<p>Deselvolvimento científico</p>
+</div>
+<div>
+	<img src="/team/guido.png" alt="Guido Rezende" />
+	<h4>Guido Rezende</h4>
+	<p>Programação da estação terra</p>
+</div>
+<div>
+	<img src="/team/levi.png" alt="Levi Gomes" />
+	<h4>Levi Gomes</h4>
+	<p>Programação do CanSat</p>
+</div>
+<div>
+	<img src="/team/miguel.png" alt="Miguel Monteiro" />
+	<h4>Miguel Monteiro</h4>
+	<p>Paraquedas e estrutura</p>
+</div>
+<div>
+	<img src="/team/filipa.png" alt="Filipa Cheng" />
+	<h4>Filipa Cheng</h4>
+	<p>Divulgação</p>
+</div>
+
+<h2 id="blog">Recent Posts</h2>
 <PostList postList={data.posts} />
 <div class="text-center my-2"><a href="/archive" class="btn text-2xl py-2 px-4">See All</a></div>
-<h2 id="about">About</h2>
-<p>
-	So, what's this all <em>about</em>? It's about how I made a game. Sometimes. Really, it's about
-	whatever I feel like writing. Most of the time, it will be about making games, but everything is
-	fair game for me. I'll try to post every other week, but due to other responsiblities (aka.
-	school), I might be unable to fullfil a schedule. If you'd like to contact me for some reason
-	(preferably related to this blog), you can find me on
-	<a href="https://discordapp.com/users/924653755763396639">Discord</a>. However, please don't send
-	a friend request. I won't accept it.
-</p>
-<h2>Random Stuff</h2>
-<div>
-	<p>This paragraph is just what it's name says it is: random stuff. Firstly, some links.</p>
-	<ul>
-		<li><a href="https://github.com/levimcgomes/">My GitHub account</a></li>
-		<li>
-			<a href="https://github.com/levimcgomes/levimcgomes.github.io">This website's source code</a>
-		</li>
-	</ul>
-	<!--<p>
-		Next, some utilities I've made for myself and put in this site for ease of access. Enjoy!
-		(please note that these were made for personal use, so they're very low quality tools; however,
-		I do think they're useful)
-	</p>-->
-	<ul>
-		<!--<li><a href="/hidden/color">Color Palette Helper</a></li>-->
-	</ul>
-</div>
+
+<h2 id="sponsor">Com o apoio de:</h2>
+
 <!--The text just ended right at the bottom of the page, and it looked odd, so this adds some empty space-->
 <div class="py-12" />

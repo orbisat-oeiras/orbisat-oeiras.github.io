@@ -12,13 +12,13 @@
 	</a>
 	<div class="flex gap-6 content-center [&>*]:h-min">
 		<Dropdown label="Sobre">
-			<a class="text-cansat-cream" href="/24/about#cansat">CanSat</a>
-			<a class="text-cansat-cream" href="/24/about#project">O&nbsp;Projeto</a>
-			<a class="text-cansat-cream" href="/24/about#team">A&nbsp;Equipa</a>
+			<a class="text-cansat-cream" href="/24/#cansat">CanSat</a>
+			<a class="text-cansat-cream" href="/24/#project">O&nbsp;Projeto</a>
+			<a class="text-cansat-cream" href="/24/#team">A&nbsp;Equipa</a>
 		</Dropdown>
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
-		<a class="text-cansat-cream" href="/24/blog">Blog</a>
-		<a class="text-cansat-cream" href="/24/sponsor">Patrocínios</a>
+		<a class="text-cansat-cream" href="/24/#blog">Blog</a>
+		<a class="text-cansat-cream" href="/24/#sponsor">Apoios</a>
 		<ThemeToggle />
 	</div>
 </nav>
