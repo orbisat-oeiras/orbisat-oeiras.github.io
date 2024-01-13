@@ -12,12 +12,13 @@
 			<!--<h2 class="no-underline text-grey-900 not-italic">How I Made A Game</h2>-->
 			<img class="w-[90%] md:h-[100%] md:w-auto md:m-0" src="/logo_transparente_claro.png" alt="" />
 		</a>
+	{:else}
+		<div
+			class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px] w-[90%] md:h-[100%]"
+		>
+			<br /><br /><br />
+		</div>
 	{/if}
-	<div
-		class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px] w-[90%] md:h-[100%]"
-	>
-		<br /><br /><br />
-	</div>
 	<div class="flex gap-6 content-center [&>*]:h-min">
 		<Dropdown label="Sobre">
 			<!--Removed the / behind the # because it was causing issues-->
