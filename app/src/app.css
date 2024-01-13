@@ -65,27 +65,27 @@
 	}
 
 	.person {
-		@apply md:h-[calc(100vh-120px)] flex flex-row snap-center;
+		@apply h-[100vh] md:h-[calc(100vh-120px)] flex flex-col md:flex-row snap-center;
 	}
 
 	.person:nth-child(even) {
-		@apply flex-row-reverse;
+		@apply md:flex-row-reverse;
 	}
 
 	.person>img {
-		@apply relative w-[10vw] right-[10vw] lg:w-[20vw] lg:right-[20vw] h-auto;
+		@apply md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[calc((9/16)*(100vh-120px))] md:right-[10vw] lg:right-[20vw] self-center;
 	}
 
 	.person:nth-child(even)>img {
-		@apply left-[10vw] lg:left-[20vw];
+		@apply md:left-[10vw] lg:left-[20vw];
 	}
 
 	.person>div {
-		@apply flex flex-col justify-center relative right-[10vw] lg:right-[20vw] px-3;
+		@apply flex flex-col justify-center relative md:right-[10vw] lg:right-[20vw] px-3;
 	}
 
 	.person:nth-child(even)>div {
-		@apply left-[10vw] lg:left-[20vw] items-end;
+		@apply md:left-[10vw] lg:left-[20vw] md:items-end;
 	}
 
 	.person>div * {
@@ -93,7 +93,7 @@
 	}
 
 	.scrollsnap {
-		@apply snap-y snap-mandatory;
+		@apply snap-y md:snap-mandatory;
 	}
 
 	giscus-widget::part(iframe) {

@@ -10,18 +10,29 @@
 	let scrollAmount: number;
 	let startYBound: number = 200;
 	let endYBound: number = 50;
+	let isSmall: boolean | undefined = undefined;
 
 	onMount(() => {});
 
 	function handleScroll(e: UIEvent) {
 		if (import.meta.env.SSR) return;
 
+		//if (isSmall === undefined) {
+		isSmall = window.matchMedia('(max-width: 700px)').matches;
+		console.log(isSmall);
+		//}
+
 		let startY = startScrollSnap.getBoundingClientRect().top;
 		let endY = endScrollSnap.getBoundingClientRect().top;
 
-		console.log(`startY=${startY}; endY=${endY};`);
+		//console.log(`startY=${startY}; endY=${endY};`);
 
 		const body = document.getElementsByTagName('html')[0];
+
+		if (isSmall) {
+			//console.log('Small');
+			return;
+		}
 
 		if (!body.classList.contains('scrollsnap') && startY < startYBound && endY > endYBound) {
 			console.log('Adding snap');
