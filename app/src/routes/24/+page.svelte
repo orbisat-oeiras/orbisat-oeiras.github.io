@@ -3,6 +3,9 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	let startScrollSnap: HTMLElement;
+	let endScrollSnap: HTMLElement;
 </script>
 
 <svelte:head>
@@ -20,35 +23,49 @@
 </p>
 
 <h2 id="team">A Equipa</h2>
+<div class="people">
+	<div bind:this={startScrollSnap} class="person">
+		<img src="/team/rita.png" alt="Rita Fernandes" />
 <div>
-	<img src="/team/rita.png" alt="Rita Fernandes" />
 	<h4>Rita Fernandes</h4>
-	<p>Coordenação, Hardware</p>
+			<div>Coordenação, Hardware</div>
+		</div>
 </div>
+	<div class="person">
+		<img src="/team/gabriel.png" alt="Gabriel Neto" />
 <div>
-	<img src="/team/gabriel.png" alt="Gabriel Neto" />
 	<h4>Gabriel Neto</h4>
-	<p>Deselvolvimento científico</p>
+			<div>Deselvolvimento científico</div>
+		</div>
 </div>
+	<div class="person">
+		<img src="/team/guido.png" alt="Guido Rezende" />
 <div>
-	<img src="/team/guido.png" alt="Guido Rezende" />
 	<h4>Guido Rezende</h4>
-	<p>Programação da estação terra</p>
+			<div>Programação da estação terra</div>
+		</div>
 </div>
+	<div class="person">
+		<img src="/team/levi.png" alt="Levi Gomes" />
 <div>
-	<img src="/team/levi.png" alt="Levi Gomes" />
 	<h4>Levi Gomes</h4>
-	<p>Programação do CanSat</p>
+			<div>Programação do CanSat</div>
+		</div>
 </div>
+	<div class="person">
+		<img src="/team/miguel.png" alt="Miguel Monteiro" />
 <div>
-	<img src="/team/miguel.png" alt="Miguel Monteiro" />
 	<h4>Miguel Monteiro</h4>
-	<p>Paraquedas e estrutura</p>
+			<div>Paraquedas e estrutura</div>
+		</div>
 </div>
+	<div bind:this={endScrollSnap} class="person">
+		<img src="/team/filipa.png" alt="Filipa Cheng" />
 <div>
-	<img src="/team/filipa.png" alt="Filipa Cheng" />
 	<h4>Filipa Cheng</h4>
-	<p>Divulgação</p>
+			<div>Divulgação</div>
+		</div>
+	</div>
 </div>
 
 <h2 id="blog">Recent Posts</h2>
