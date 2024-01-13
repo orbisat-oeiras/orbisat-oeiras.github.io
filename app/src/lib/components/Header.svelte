@@ -17,8 +17,8 @@
 			<a class="text-cansat-cream" href="/24/about#team">A&nbsp;Equipa</a>
 		</Dropdown>
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
-		<a class="text-grey-900" href="/24/blog">Blog</a>
-		<a class="text-grey-900" href="/24/sponsor">Patrocínios</a>
+		<a class="text-cansat-cream" href="/24/blog">Blog</a>
+		<a class="text-cansat-cream" href="/24/sponsor">Patrocínios</a>
 		<ThemeToggle />
 	</div>
 </nav>
