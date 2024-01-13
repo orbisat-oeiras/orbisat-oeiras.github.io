@@ -1,6 +1,5 @@
-import type { PageServerLoad } from './$types';
-import { getPostList } from '$lib/server/post';
+import { redirect } from '@sveltejs/kit';
 
-export const load = (() => {
-	return { posts: getPostList(6) };
-}) satisfies PageServerLoad;
+export function load() {
+	throw redirect(302, '/24');
+}
