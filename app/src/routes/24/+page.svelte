@@ -3,12 +3,53 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	//THIS CODE IS RELATED TO THE ANIMATION OF THE LOGO TO THE NAVBAR
+
+	// The scroll of the window (how far it has scrolled)
+	let scroll: number = 0;
+	// How long we have to scroll for the animation to finish (essentially, how long is the animation takes)
+	const lim = 500;
+	// How much we have scrolled in the animation (0 - 50)
+	let scrollPercentage = 0;
+	$: {
+		// Limits the scroll variable to the animation limit
+		scroll = scroll >= lim ? lim : scroll;
+		scrollPercentage = scroll / (lim / 50);
+	}
 </script>
 
+<!--Binds the scroll variable to the scroll of the window-->
+<svelte:window bind:scrollY={scroll} />
+
 <svelte:head>
-	<title>How I Made A Game</title>
+	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
 
+<!--Add here a check to see if the app is running on mobile-->
+{#if true}
+	<div
+		class="logo"
+		style="left: {50 - scrollPercentage + 3.7}%; top: {50 - scrollPercentage + 4.5}%; width: {50 -
+			scrollPercentage +
+			5}%"
+	>
+		{#if scroll == 500}
+			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
+				{#if true}
+					<img alt="logotype" src="logo_transparente_claro.png" />
+				{/if}
+			</a>
+		{:else if true || scroll >= 480}
+			<img alt="logotype" src="logo_transparente_claro.png" />
+		{:else if scroll <= 480}
+			<img alt="logotype" src="logo_transparente_escuro.png" />
+		{/if}
+	</div>
+	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. 
+		There is probably a better way to do this-->
+	<div class="empty-screen" />
+{/if}
 <h2 id="project">O Projeto</h2>
 <p>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id felis ac odio eleifend dictum
@@ -59,3 +100,14 @@
 
 <!--The text just ended right at the bottom of the page, and it looked odd, so this adds some empty space-->
 <div class="py-12" />
+
+<style>
+	.logo {
+		position: fixed;
+		transform: translate(-50%, -50%);
+		z-index: 11;
+	}
+	.empty-screen {
+		height: 130vh;
+	}
+</style>
