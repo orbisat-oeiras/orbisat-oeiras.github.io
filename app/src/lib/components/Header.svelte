@@ -1,13 +1,14 @@
 <script>
 	import ThemeToggle from './ThemeToggle.svelte';
 	import Dropdown from './Dropdown.svelte';
+	import { page } from '$app/stores';
 </script>
 
 <nav
 	class="bg-cansat-black text-cansat-cream flex flex-col items-center justify-between md:flex-row md:justify-between md:content-center py-6 px-4 md:sticky top-0 z-10 [&>*]:h-min"
 >
-	<!--Add here a check to see if the app is running on mobile-->
-	{#if false}
+	<!--Add here a check to see if the app is running on mobile and to see if we are on the archive-->
+	{#if false || $page.url.pathname != '/24'}
 		<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
 			<!--<h2 class="no-underline text-grey-900 not-italic">How I Made A Game</h2>-->
 			<img class="w-[90%] md:h-[100%] md:w-auto md:m-0" src="/logo_transparente_claro.png" alt="" />
