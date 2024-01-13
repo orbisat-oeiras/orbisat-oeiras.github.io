@@ -18,6 +18,9 @@
 	>
 	{#if isExpanded}
 		<div
+			on:click={() => {
+				isExpanded = false;
+			}}
 			class="absolute bg-cansat-grey p-2 mt-1 text-cansat-cream rounded-md w-fit [&_*]:w-fit"
 			transition:slide
 		>
