@@ -9,6 +9,10 @@
 		@apply font-open;
 	}
 
+	html {
+		@apply md:scroll-pt-[124px];
+	}
+
 	body {
 		@apply bg-grey-900 dark:bg-grey-200 text-grey-100 dark:text-grey-900 font-[auto] transition-colors;
 	}
