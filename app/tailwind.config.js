@@ -34,6 +34,9 @@ export default {
 				accent: '#dd5928'
 			}
 		},
+		fontFamily: {
+			open: ['Open Sans', 'sans-serif']
+		},
 		screens: {
 			sm: '640px',
 			// => @media (min-width: 640px) { ... }
