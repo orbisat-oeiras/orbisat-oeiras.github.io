@@ -1,7 +1,10 @@
 <script lang="ts">
+	// Use an animation to show/hide the dropdown
 	import { slide } from 'svelte/transition';
 
+	// Internal state to keep track of the dropdown
 	let isExpanded = false;
+	// Prop to control the label shown on the dropdown
 	export let label: string;
 </script>
 
@@ -11,15 +14,19 @@
 		on:click={() => {
 			isExpanded = !isExpanded;
 		}}
-		>{label}
+	>
+		{label}
+		<!--Do some CSS magic to create a nice looking animated arrow-->
 		<i
 			class="border-solid border-t-0 border-r-[3px] border-b-[3px] border-l-0 inline-block p-1 mx-1 rotate-[45deg] transition-transform duration-500"
 			style="transform: rotate({isExpanded ? 225 : 45}deg)"
 		/>
 	</button>
+	<!--Only show the contents if the dropdown is expanded-->
 	{#if isExpanded}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<!--Hide the dropdown when an item is clicked-->
 		<div
 			on:click={() => {
 				isExpanded = false;

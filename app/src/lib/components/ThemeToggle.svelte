@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { themeStore } from '$lib/stores';
 	import { onMount } from 'svelte';
+	// A spring is used to animate the icon
 	import { spring } from 'svelte/motion';
 	// Store both the sun's and the moon's properties
 	const props = {
@@ -19,12 +20,13 @@
 			opacity: 1
 		}
 	};
+	// Create the configuration for the spring
 	const springConfig = {
 		stiffness: 0.07,
 		damping: 0.17
 	};
 
-	// Get the initial theme, and update it when necessary
+	// Get the initial theme
 	function getTheme() {
 		if (import.meta.env.SSR) return false;
 		const stored = localStorage.getItem('theme');
@@ -32,7 +34,9 @@
 		else return !window.matchMedia('(prefers-color-scheme: dark)').matches;
 	}
 
+	// Update the theme, saving it on localStorage and adding the proper CSS
 	function setTheme(theme: boolean) {
+		// When pre-rendering, we don't care about theme
 		if (import.meta.env.SSR) return;
 		// Save the theme for later
 		localStorage.setItem('theme', String(theme));
@@ -52,6 +56,7 @@
 
 	// True means light, false means dark
 	let theme = getTheme();
+	// This is called when this component is inserted into the DOM
 	onMount(() => {
 		theme = getTheme();
 		setTheme(theme);
@@ -64,7 +69,7 @@
 	const transform = spring(props[theme ? 'sun' : 'moon'].transform, springConfig);
 	const opacity = spring(props[theme ? 'sun' : 'moon'].opacity, springConfig);
 
-	// Reactive declarations: update each of the props based on the mode
+	// Reactive declarations: update each of the props based on the theme
 	$: {
 		r.set(props[theme ? 'sun' : 'moon'].r);
 		cx.set(props[theme ? 'sun' : 'moon'].cx);
@@ -73,12 +78,15 @@
 		opacity.set(props[theme ? 'sun' : 'moon'].opacity);
 	}
 	$: setTheme(theme);
+	// Also propagate theme changes to the entire app
 	$: {
 		themeStore.set(theme);
 	}
 </script>
 
+<!--Toggle the theme when the component is clicked-->
 <button on:click={toggleTheme}>
+	<!--It's SVG, and it looks good. That's all I know-->
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"

@@ -1,17 +1,23 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
+	// Data loaded on the server
 	export let data: PageData;
 
+	// Import Giscus to handle comments
 	import Giscus from '@giscus/svelte';
+	// Get a reference to the theme state (light or dark)
 	import { themeStore } from '$lib/stores';
 	// Update Giscus whenever the theme changes
 	themeStore.subscribe((value) => {
 		try {
+			// Get the Giscus iframe
 			const iframe = document
 				.querySelector('giscus-widget')!
 				.shadowRoot!.querySelector<HTMLIFrameElement>('iframe');
 			if (!iframe || !iframe.contentWindow) return;
+			// Send a message to Giscus (through the iframe)
+			// telling it to change theme
 			iframe.contentWindow.postMessage(
 				{
 					giscus: {
@@ -23,6 +29,7 @@
 				'https://giscus.app'
 			);
 		} catch (e) {
+			// This only happens when pre-rendering
 			// Build doesn't like empty blocks...
 			console.log('Failed to communicate with Giscus, this is likely fine');
 		}
@@ -30,6 +37,7 @@
 </script>
 
 <h2 class="no-underline text-center text-5xl my-6">{data.post.title}</h2>
+<!--Posts are allowed to not have an image, so handle it properly-->
 {#if data.post.cover_image_exists}
 	<img src={'/' + data.post.cover_image} alt="" />
 {/if}
@@ -45,12 +53,17 @@
 		</li>
 	{/each}
 </ul>
+<!--This div has all these styles because it must style all
+	of the post's content as well as itself-->
 <div
 	class="text-lg [&_h2]:mt-4 [&_h3]:mt-4 [&_h4]:mt-4 [&_ul]:list-disc [&_ul]:list-inside [&_p]:indent-5 [&_img]:mt-6 [&_code]:text-[length:inherit] [&_pre]:bg-grey-800 [&_pre]:dark:bg-grey-200 [&_pre]:text-grey-100 [&_pre]:dark:text-grey-900 [&_pre]:rounded [&_pre]:overflow-x-scroll [&_pre]:border-2 [&_.line-number]:bg-grey-700 [&_.line-number]:dark:bg-grey-300 [&_.line-number]:text-accent-100 [&_.line-number]:dark:text-accent-900 [&_.line-number]:sticky [&_.line-number]:left-0 [&_.line-number]:px-1 [&_.line-number]:text-right [&_td]:pl-1 [&_blockquote]:border-l-4 [&_blockquote]:border-accent-500 [&_blockquote]:bg-accent-900 [&_blockquote]:dark:bg-accent-200 [&_blockquote_p]:indent-0 [&_blockquote]:p-3 [&_blockquote]:pl-2 [&_blockquote]:mx-5 [&_blockquote]:my-3 [&_eq]:contents"
 >
+	<!--Inject the rendered markdown-->
 	{@html data.innerHTML}
 </div>
 
+<!--Add links to the previous and next posts,
+	if they exist-->
 <d class="flex mt-8">
 	{#if data.previousPostPath !== '/blog/undefined'}
 		<a
