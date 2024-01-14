@@ -3,6 +3,7 @@
 declare global {
 	namespace App {
 		interface Error {
+			// Process Working Directory
 			pwd: string;
 		}
 		// interface Locals {}

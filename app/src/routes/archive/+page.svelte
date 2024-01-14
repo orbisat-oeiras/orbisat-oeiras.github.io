@@ -1,4 +1,5 @@
 <script lang="ts">
+	// TODO: I think this route can be removed
 	import PostList from '$lib/components/PostList.svelte';
 	import type { PageData } from './$types';
 

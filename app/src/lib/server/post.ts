@@ -3,7 +3,7 @@ import type { Post } from './post.type';
 // File reading
 import fs from 'fs';
 import glob from 'glob';
-// Markdown parsing
+// Frontmatter parsing
 import matter from 'gray-matter';
 
 // Use caching (or memoization if you're fancy),
@@ -16,27 +16,29 @@ export function getPostList(limit = -1): Post[] {
 		// Just a sanity check to make sure caching is working properly
 		console.log('COMPUTE POST LIST');
 		// All posts should be in /src/posts/,
-		// either in the top - level or inside
+		// either in the top-level or inside
 		// sub folders
 		const postPaths = glob.sync('./src/posts/**/*.md');
-
+		// Get a Post object for each path
 		const posts = postPaths.map((path) => postFromPath(path));
-
+		// Sort the posts and cache them
 		cachedPostList = sortPostsByDate(posts);
 	}
-
+	// Optionally trim the post list
 	if (limit === -1) return cachedPostList;
 	else return cachedPostList.slice(0, limit);
 }
 
 export function postFromPath(path: string) {
+	// Read the post
 	const file = fs.readFileSync(path);
-
+	// Parse the frontmatter
 	const parsed = matter(file);
-	// the Date constructor expects an American style string,
-	// bout ours is European style, so we need to do some juggling
+	// The Date constructor expects an American style string,
+	// but ours is European style, so we need to do some juggling
 	const splitDate = (parsed.data['date'] as string).split('/');
 	const date = new Date(splitDate[2] + '/' + splitDate[1] + '/' + splitDate[0]);
+	// Build the post object
 	return {
 		path: path,
 		title: parsed.data['title'] as string,
@@ -50,6 +52,7 @@ export function postFromPath(path: string) {
 	} as Post;
 }
 
+// Helper function to sort the posts
 function sortPostsByDate(posts: Post[]): Post[] {
 	const comparer = (a: Post, b: Post) => {
 		if (a.date < b.date) {

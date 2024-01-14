@@ -25,7 +25,17 @@ export default {
 				700: '#59C9C8',
 				800: '#8FDCDB',
 				900: '#CCEFEF'
+			},
+			cansat: {
+				black: '#231f20',
+				grey: '#58595b',
+				white: '#ffffff',
+				cream: '#fffde9',
+				accent: '#dd5928'
 			}
+		},
+		fontFamily: {
+			open: ['Open Sans', 'sans-serif']
 		},
 		screens: {
 			sm: '640px',

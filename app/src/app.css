@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
+	* {
+		@apply font-open;
+	}
+
+	html {
+		@apply md:scroll-pt-[124px];
+	}
+
 	body {
-		@apply bg-grey-900 dark:bg-grey-200 text-grey-100 dark:text-grey-900 font-[auto] transition-colors;
+		@apply bg-cansat-cream dark:bg-cansat-grey text-cansat-black dark:text-cansat-cream font-[auto] transition-colors;
 	}
 
 	h1,
@@ -13,7 +23,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply underline decoration-accent-500 font-bold;
+		@apply underline decoration-cansat-accent font-bold;
 	}
 
 	h1 {
@@ -33,7 +43,7 @@
 	}
 
 	a {
-		@apply italic text-accent-500 transition-colors duration-500 underline decoration-[transparent] hover:decoration-accent-500;
+		@apply italic text-cansat-accent transition-colors duration-500 underline decoration-[transparent] hover:decoration-cansat-accent;
 	}
 
 	p {
@@ -47,14 +57,62 @@
 
 @layer components {
 	.btn {
-		@apply bg-accent-500 px-2 py-1 rounded-md text-lg cursor-pointer text-center text-grey-900 not-italic no-underline;
+		@apply bg-cansat-accent px-2 py-1 rounded-md text-lg cursor-pointer text-center text-cansat-cream not-italic no-underline;
 	}
 
 	.tag {
 		@apply border-y-2 border-accent-500 px-2 py-0 mt-0 mb-1 ml-2 mr-0 leading-tight bg-accent-900 dark:bg-accent-300 text-grey-100 dark:text-grey-900 not-italic no-underline duration-[.1s];
 	}
 
+	.person {
+		@apply h-[100vh] md:h-[calc(100vh-120px)] flex flex-col md:flex-row snap-center;
+	}
+
+	.person:nth-child(even) {
+		@apply md:flex-row-reverse;
+	}
+
+	.person>img {
+		@apply md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[calc((9/16)*(100vh-120px))] md:right-[10vw] lg:right-[20vw] self-center;
+	}
+
+	.person:nth-child(even)>img {
+		@apply md:left-[10vw] lg:left-[20vw];
+	}
+
+	.person>div {
+		@apply flex flex-col justify-center relative md:right-[10vw] lg:right-[20vw] px-3;
+	}
+
+	.person:nth-child(even)>div {
+		@apply md:left-[10vw] lg:left-[20vw] md:items-end;
+	}
+
+	.person>div * {
+		@apply w-fit text-3xl;
+	}
+
+	.scrollsnap {
+		@apply snap-y md:snap-mandatory;
+	}
+
 	giscus-widget::part(iframe) {
 		@apply mt-12;
+	}
+}
+
+@layer utilities {
+
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		/* IE and Edge */
+		scrollbar-width: none;
+		/* Firefox */
 	}
 }
