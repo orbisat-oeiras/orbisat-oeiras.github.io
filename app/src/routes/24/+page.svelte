@@ -3,25 +3,47 @@
 	import PostList from '$lib/components/PostList.svelte';
 	// Import types
 	import type { PageData } from './$types';
-	// Import svelte hooks
-	import { onMount } from 'svelte';
+	import { themeStore } from '$lib/stores';
 
 	// Data provided by the server load function
 	export let data: PageData;
+	//THIS CODE IS RELATED TO THE ANIMATION OF THE LOGO TO THE NAVBAR
+
+	// The scroll of the window (how far it has scrolled)
+	let scroll: number = 0;
+	// How long we have to scroll for the animation to finish (essentially, how long is the animation takes)
+	const logoAnimationScrollAmount = 500;
+	// How much we have scrolled in the animation (0 - 50)
+	let scrollPercentage = 0;
+	let innerWidth: number = 0;
+	let innerHeight: number = 0;
+	// Image positioning parameters
+	let logoLeft: number;
+	let logoTop: number;
+	let logoWidth: number;
+
+	function lerp(a: number, b: number, t: number): number {
+		return a + t * (b - a);
+	}
+
+	$: {
+		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
+		scrollPercentage = scroll >= logoAnimationScrollAmount ? 50 : scroll / (logoAnimationScrollAmount / 50);
+		logoLeft = lerp(76, innerWidth / 2, 1 - scrollPercentage * 0.02);
+		logoTop = lerp(60, 160 + 0.15 * innerWidth, 1 - scrollPercentage * 0.02);
+		logoWidth = lerp(120, innerWidth / 2, 1 - scrollPercentage * 0.02);
+  }
+  
+  // THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 
 	// Element bindings
 	let scrollSnapStartMarker: HTMLElement;
 	let scrollSnapEndMarker: HTMLElement;
-	// Scroll amount on the window
-	let scrollAmount: number;
 	// Bounds for scroll snapping
 	let scrollSnapStartBound: number = 200;
 	let scrollSnapEndBound: number = 50;
 	// Flag for a small device (width < 700px)
-	let isSmall: boolean | undefined = undefined;
-
-	// On mount is called when the component is added to the DOM
-	onMount(() => {});
+	let isSmallDevice: boolean | undefined = undefined;
 
 	// This event is triggered when the user scrolls the main page
 	function handleScroll(e: UIEvent) {
@@ -34,15 +56,15 @@
 		   of a device, e.g., turning a mobile device on its side. If
 		   we decide to reenable it, maybe it should move to onMount()
 		*/
-		//if (isSmall === undefined) {
+		//if (isSmallDevice === undefined) {
 		// Update the small device flag
-		isSmall = window.matchMedia('(max-width: 700px)').matches;
-		console.log(isSmall);
+		isSmallDevice = window.matchMedia('(max-width: 700px)').matches;
+		console.log(isSmallDevice);
 		//}
 
 		// On small devices, scroll-snapping of the team presentation
 		// doesn't feel good, so we disable it
-		if (isSmall) {
+		if (isSmallDevice) {
 			//console.log('Small');
 			return;
 		}
@@ -77,13 +99,33 @@
 	}
 </script>
 
+<!--Binds the scroll variable to the scroll of the window-->
+<svelte:window bind:scrollY={scroll} bind:innerWidth bind:innerHeight on:scroll={handleScroll} />
+
 <svelte:head>
-	<title>Orbisat Oeiras 2024</title>
+	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
 
-<!--Get a reference to the scroll amount and register the scroll event-->
-<svelte:window bind:scrollY={scrollAmount} on:scroll={handleScroll} />
-
+<!--Add here a check to see if the app is running on mobile-->
+{#if !isSmallDevice}
+	<div
+		class="fixed translate-x-[-50%] translate-y-[-50%] z-[11]"
+		style="left: {logoLeft}px; top: {logoTop}px; width: {logoWidth}px"
+	>
+		{#if scrollPercentage == 50}
+			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
+				<img alt="logotype" src="logo_transparente_claro.png" />
+			</a>
+		{:else if !$themeStore || scrollPercentage >= 48}
+			<img alt="logotype" src="logo_transparente_claro.png" />
+		{:else if scrollPercentage <= 48}
+			<img alt="logotype" src="logo_transparente_escuro.png" />
+		{/if}
+	</div>
+	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. 
+		There is probably a better way to do this-->
+	<div class="h-[calc(55vh+160px)]" />
+{/if}
 <h2 id="project">O Projeto</h2>
 <p>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id felis ac odio eleifend dictum
