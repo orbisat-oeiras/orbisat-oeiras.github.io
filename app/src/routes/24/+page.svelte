@@ -1,9 +1,9 @@
 <script lang="ts">
 	import PostList from '$lib/components/PostList.svelte';
 	import type { PageData } from './$types';
+	import { themeStore } from '$lib/stores';
 
 	export let data: PageData;
-
 	//THIS CODE IS RELATED TO THE ANIMATION OF THE LOGO TO THE NAVBAR
 
 	// The scroll of the window (how far it has scrolled)
@@ -26,7 +26,7 @@
 </svelte:head>
 
 <!--Add here a check to see if the app is running on mobile-->
-{#if true}
+{#if !false}
 	<div
 		class="logo"
 		style="left: {50 - scrollPercentage + 3.7}%; top: {50 - scrollPercentage + 4.5}%; width: {50 -
@@ -35,11 +35,11 @@
 	>
 		{#if scroll == 500}
 			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
-				{#if true}
+				{#if !$themeStore}
 					<img alt="logotype" src="logo_transparente_claro.png" />
 				{/if}
 			</a>
-		{:else if true || scroll >= 480}
+		{:else if !$themeStore || scroll >= 480}
 			<img alt="logotype" src="logo_transparente_claro.png" />
 		{:else if scroll <= 480}
 			<img alt="logotype" src="logo_transparente_escuro.png" />
