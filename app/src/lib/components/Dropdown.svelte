@@ -13,9 +13,10 @@
 		}}
 		>{label}
 		<i
-			class="border-solid border-t-0 border-r-[3px] border-b-[3px] border-l-0 inline-block p-1 mx-1 rotate-[45deg]"
-		/></button
-	>
+			class="border-solid border-t-0 border-r-[3px] border-b-[3px] border-l-0 inline-block p-1 mx-1 rotate-[45deg] transition-transform duration-500"
+			style="transform: rotate({isExpanded ? 225 : 45}deg)"
+		/>
+	</button>
 	{#if isExpanded}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
