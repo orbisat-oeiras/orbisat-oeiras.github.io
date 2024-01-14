@@ -12,8 +12,8 @@
 	const lim = 500;
 	// How much we have scrolled in the animation (0 - 50)
 	let scrollPercentage = 0;
-	let innerWidth: number;
-	let innerHeight: number;
+	let innerWidth: number = 0;
+	let innerHeight: number = 0;
 	// Image positioning parameters
 	let left: number;
 	let top: number;
