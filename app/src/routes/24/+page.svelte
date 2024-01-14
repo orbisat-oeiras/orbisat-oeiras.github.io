@@ -12,9 +12,21 @@
 	const lim = 500;
 	// How much we have scrolled in the animation (0 - 50)
 	let scrollPercentage = 0;
+	// Image positioning parameters
+	let left: number;
+	let top: number;
+	let width: number;
+
+	function lerp(a: number, b: number, t: number): number {
+		return a + t * (b - a);
+	}
+
 	$: {
 		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
 		scrollPercentage = scroll >= lim ? 50 : scroll / (lim / 50);
+		left = lerp(6.82, 50, 1 - scrollPercentage * 0.02);
+		top = lerp(7.62, 55, 1 - scrollPercentage * 0.02);
+		width = lerp(8.12, 50, 1 - scrollPercentage * 0.02);
 	}
 </script>
 
@@ -27,12 +39,7 @@
 
 <!--Add here a check to see if the app is running on mobile-->
 {#if !false}
-	<div
-		class="logo"
-		style="left: {50 - scrollPercentage + 3.7}%; top: {50 - scrollPercentage + 4.5}%; width: {50 -
-			scrollPercentage +
-			5}%"
-	>
+	<div class="logo" style="left: {left}%; top: {top}%; width: {width}%">
 		{#if scroll == 500}
 			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
 				{#if !$themeStore}
@@ -107,6 +114,6 @@
 		z-index: 11;
 	}
 	.empty-screen {
-		height: 130vh;
+		height: calc(55vh + 124px);
 	}
 </style>
