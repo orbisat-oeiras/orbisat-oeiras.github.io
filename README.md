@@ -1,3 +1,3 @@
-# orbisat-oeiras.github.io
+# Orbisat Oeiras
 
-Repository for the Github Pages website https://orbisat-oeiras.github.io
+O site oficial da equipa Orbisat Oeiras!

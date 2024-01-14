@@ -37,6 +37,7 @@ function highlight(code: string, lang: string, attrRaw = ''): string {
 }
 
 // Custom containers
+// Insert images, videos or other media
 const mediaContainer: MD_Container.ContainerOpts = {
 	// Syntax:
 	// &&&<img|video>[path/to/file]
@@ -49,7 +50,9 @@ const mediaContainer: MD_Container.ContainerOpts = {
 	render: function (tokens, idx) {
 		const m = tokens[idx].info.trim().match(/(.*)\[(.*)\]/);
 
+		// Check if this is the container start or end
 		if (m !== null && tokens[idx].nesting === 1) {
+			// Container start: start a figure and inject the media
 			const mediaType = m[1];
 			/* For some unknown reason, Svelte thinks
 		 	   /path/to/image.png
@@ -57,7 +60,7 @@ const mediaContainer: MD_Container.ContainerOpts = {
 		 	   /blog/posts/path/to/image.png
 		 	   and even goes as far as trying to use that as a route
 		 	   for /routes/blog/[...slug]
-		 	   causing a lot of errors
+		 	   causing a lot of errors.
 		 	   So we just give it a little hint :)
 			*/
 			const mediaSrc = '../../' + m[2];
@@ -86,11 +89,14 @@ const mediaContainer: MD_Container.ContainerOpts = {
 				);
 			}
 		} else {
+			// Container end: close the figure, this way everythin in between will
+			// be treated as the caption
 			return '</figcaption></figure>';
 		}
 	}
 };
-
+// This is used in exatly one post in the original blog,
+// and it doesn't even work
 const quoteContainer: MD_Container.ContainerOpts = {
 	marker: '@',
 	validate: () => true,
@@ -121,6 +127,7 @@ md = md.use(MD_TexMath, {
 md = md.use(MD_Container, 'media', mediaContainer);
 md = md.use(MD_Container, 'quote', quoteContainer);
 
+// Wrap the parser in an export
 export default function parseMarkdownFromFile(markdown: string): string {
 	return md.render(markdown);
 }
