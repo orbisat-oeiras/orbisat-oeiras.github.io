@@ -45,15 +45,13 @@
 		class="fixed translate-x-[-50%] translate-y-[-50%] z-[11]"
 		style="left: {left}px; top: {top}px; width: {width}px"
 	>
-		{#if scroll == 500}
+		{#if scrollPercentage == 50}
 			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
-				{#if !$themeStore}
-					<img alt="logotype" src="logo_transparente_claro.png" />
-				{/if}
+				<img alt="logotype" src="logo_transparente_claro.png" />
 			</a>
-		{:else if !$themeStore || scroll >= 480}
+		{:else if !$themeStore || scrollPercentage >= 48}
 			<img alt="logotype" src="logo_transparente_claro.png" />
-		{:else if scroll <= 480}
+		{:else if scrollPercentage <= 48}
 			<img alt="logotype" src="logo_transparente_escuro.png" />
 		{/if}
 	</div>
