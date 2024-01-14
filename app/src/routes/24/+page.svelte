@@ -12,6 +12,8 @@
 	const lim = 500;
 	// How much we have scrolled in the animation (0 - 50)
 	let scrollPercentage = 0;
+	let innerWidth: number;
+	let innerHeight: number;
 	// Image positioning parameters
 	let left: number;
 	let top: number;
@@ -24,14 +26,14 @@
 	$: {
 		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
 		scrollPercentage = scroll >= lim ? 50 : scroll / (lim / 50);
-		left = lerp(6.82, 50, 1 - scrollPercentage * 0.02);
-		top = lerp(7.62, 55, 1 - scrollPercentage * 0.02);
-		width = lerp(8.12, 50, 1 - scrollPercentage * 0.02);
+		left = lerp(76, innerWidth / 2, 1 - scrollPercentage * 0.02);
+		top = lerp(60, 160 + 0.15 * innerWidth, 1 - scrollPercentage * 0.02);
+		width = lerp(120, innerWidth / 2, 1 - scrollPercentage * 0.02);
 	}
 </script>
 
 <!--Binds the scroll variable to the scroll of the window-->
-<svelte:window bind:scrollY={scroll} />
+<svelte:window bind:scrollY={scroll} bind:innerWidth bind:innerHeight />
 
 <svelte:head>
 	<title>OrbiSat Oeiras 24</title>
@@ -39,7 +41,10 @@
 
 <!--Add here a check to see if the app is running on mobile-->
 {#if !false}
-	<div class="logo" style="left: {left}%; top: {top}%; width: {width}%">
+	<div
+		class="fixed translate-x-[-50%] translate-y-[-50%] z-[11]"
+		style="left: {left}px; top: {top}px; width: {width}px"
+	>
 		{#if scroll == 500}
 			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
 				{#if !$themeStore}
@@ -54,7 +59,7 @@
 	</div>
 	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. 
 		There is probably a better way to do this-->
-	<div class="empty-screen" />
+	<div class="h-[calc(55vh+160px)]" />
 {/if}
 <h2 id="project">O Projeto</h2>
 <p>
@@ -106,14 +111,3 @@
 
 <!--The text just ended right at the bottom of the page, and it looked odd, so this adds some empty space-->
 <div class="py-12" />
-
-<style>
-	.logo {
-		position: fixed;
-		transform: translate(-50%, -50%);
-		z-index: 11;
-	}
-	.empty-screen {
-		height: calc(55vh + 124px);
-	}
-</style>
