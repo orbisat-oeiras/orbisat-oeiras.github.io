@@ -13,9 +13,8 @@
 	// How much we have scrolled in the animation (0 - 50)
 	let scrollPercentage = 0;
 	$: {
-		// Limits the scroll variable to the animation limit
-		scroll = scroll >= lim ? lim : scroll;
-		scrollPercentage = scroll / (lim / 50);
+		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
+		scrollPercentage = scroll >= lim ? 50 : scroll / (lim / 50);
 	}
 </script>
 
