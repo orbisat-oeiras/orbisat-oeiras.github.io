@@ -28,13 +28,14 @@
 
 	$: {
 		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
-		scrollPercentage = scroll >= logoAnimationScrollAmount ? 50 : scroll / (logoAnimationScrollAmount / 50);
+		scrollPercentage =
+			scroll >= logoAnimationScrollAmount ? 50 : scroll / (logoAnimationScrollAmount / 50);
 		logoLeft = lerp(76, innerWidth / 2, 1 - scrollPercentage * 0.02);
 		logoTop = lerp(60, 160 + 0.15 * innerWidth, 1 - scrollPercentage * 0.02);
 		logoWidth = lerp(120, innerWidth / 2, 1 - scrollPercentage * 0.02);
-  }
-  
-  // THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
+	}
+
+	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 
 	// Element bindings
 	let scrollSnapStartMarker: HTMLElement;
@@ -59,7 +60,7 @@
 		//if (isSmallDevice === undefined) {
 		// Update the small device flag
 		isSmallDevice = window.matchMedia('(max-width: 700px)').matches;
-		console.log(isSmallDevice);
+		//console.log(isSmallDevice);
 		//}
 
 		// On small devices, scroll-snapping of the team presentation
