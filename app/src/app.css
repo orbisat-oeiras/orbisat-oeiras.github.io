@@ -24,7 +24,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply underline decoration-cansat-accent font-bold;
+		@apply underline decoration-cansat-accent font-bold pb-4;
 	}
 
 	h1 {
