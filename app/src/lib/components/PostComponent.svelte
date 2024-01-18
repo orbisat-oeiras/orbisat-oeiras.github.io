@@ -4,9 +4,7 @@
 	export let post: Post;
 </script>
 
-<div
-	class="w-auto rounded-lg shadow-[0_4px_8px_0_rgb(0_0_0_/_20%),_0_6px_20px_0_rgb(0_0_0_/_19%)] relative overflow-hidden min-h-[35vh]"
->
+<div class="w-auto relative overflow-hidden min-h-[35vh]">
 	{#if post.cover_image_exists}
 		<img src={'/' + post.cover_image} alt="" class="pt-5 w-10/12 mx-auto" />
 		<p
@@ -23,6 +21,7 @@
 			{post.date_string}
 		</p>
 	{/if}
+	<!--
 	<ul class="flex flex-wrap items-center ml-4 list-none">
 		{#each post.tags as tag}
 			<li>
@@ -30,7 +29,8 @@
 			</li>
 		{/each}
 	</ul>
-	<p class="text-lg py-1 mb-10 mx-4">{post.excerpt}</p>
+	-->
+	<p class="text-lg py-1 mb-10 mx-4 indent-0">{post.excerpt}</p>
 	<a
 		class="group btn absolute bottom-0 w-full rounded-none"
 		href={'/blog' + post.path.slice(11).slice(0, -3)}
