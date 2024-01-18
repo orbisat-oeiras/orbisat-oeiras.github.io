@@ -48,7 +48,7 @@
 	}
 
 	p {
-		@apply indent-4 text-lg;
+		@apply indent-4 text-lg pb-10 text-justify;
 	}
 
 	ul {
