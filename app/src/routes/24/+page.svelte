@@ -137,7 +137,15 @@
 	Pellentesque ligula enim, dignissim id lacinia a, bibendum iaculis nulla. Quisque.
 </p>
 
-<h2 id="team">A Equipa</h2>
+<h2 id="video">VIDEO</h2>
+<iframe
+	class="pb-10 w-full aspect-video"
+	src="https://www.youtube.com/embed/p3ts1383rZA?si=4hCuuej57F1CgOHs"
+	title="YouTube video player"
+	frameborder="0"
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+	allowfullscreen
+/>
 <div class="people">
 	<!--Get a reference to the start if the scroll snapping bounds-->
 	<!--This structure is very repetitive, it might be worth it to
