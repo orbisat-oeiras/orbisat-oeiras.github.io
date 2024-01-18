@@ -41,8 +41,8 @@
 	let scrollSnapStartMarker: HTMLElement;
 	let scrollSnapEndMarker: HTMLElement;
 	// Bounds for scroll snapping
-	let scrollSnapStartBound: number = 200;
-	let scrollSnapEndBound: number = 50;
+	let scrollSnapStartBound: number = 100;
+	let scrollSnapEndBound: number = 60;
 	// Flag for a small device (width < 700px)
 	let isSmallDevice: boolean | undefined = undefined;
 
