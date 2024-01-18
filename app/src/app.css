@@ -74,7 +74,7 @@
 	}
 
 	.person>img {
-		@apply md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[calc((9/16)*(100vh-120px))] md:right-[10vw] lg:right-[20vw] self-center;
+		@apply object-cover md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[70vh] md:right-[10vw] lg:right-[20vw] self-center;
 	}
 
 	.person:nth-child(even)>img {
