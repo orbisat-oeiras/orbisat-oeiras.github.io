@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Post } from '$lib/server/post.type';
+	import { themeStore } from '$lib/stores';
 	import PostComponent from './PostComponent.svelte';
 	export let postList: Post[];
 
@@ -30,9 +31,9 @@
 
 <div class="flex overflow-hidden justify-between w-full">
 	<button
-		class="text-cansat-black bg-cansat-cream border-cansat-cream border-2 rounded border-none p-4"
+		class="dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey border-cansat-cream border-2 rounded-none rounded-l border-none p-4"
 		on:pointerdown={left}
-		style="opacity: {scroll_left == 0 ? '0' : '1'}"
+		style="background-color: {scroll_left == 0 ? '#b7b3a7' : $themeStore ? '#58595b' : '#fffde9'}"
 	>
 		<slot name="left_button">&lt;</slot>
 	</button>
@@ -47,9 +48,13 @@
 		{/each}
 	</div>
 	<button
-		class="text-cansat-black bg-cansat-cream border-cansat-cream border-2 rounded border-none p-4"
+		class="dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey border-cansat-cream border-2 rounded-none rounded-r border-none p-4"
 		on:pointerdown={right}
-		style="opacity: {Math.abs(scroll_left + current_width - scroll_width) < 3 ? '0' : '1'}"
+		style="background-color: {Math.abs(scroll_left + current_width - scroll_width) < 3
+			? '#b7b3a7'
+			: $themeStore
+			? '#58595b'
+			: '#fffde9'}"
 	>
 		<slot name="right_button">&gt;</slot>
 	</button>

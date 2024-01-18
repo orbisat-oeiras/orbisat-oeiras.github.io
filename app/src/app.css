@@ -4,13 +4,19 @@
 @tailwind utilities;
 
 
+/*
+dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey
+
+md:w-[calc((9/16)*(100vh-120px))]
+*/
+
 @layer base {
 	* {
 		@apply font-open;
 	}
 
 	html {
-		@apply md:scroll-pt-[124px];
+		@apply md:scroll-pt-[120px];
 		@apply overflow-x-hidden;
 	}
 
@@ -58,7 +64,7 @@
 
 @layer components {
 	.btn {
-		@apply bg-cansat-accent px-2 py-1 rounded-md text-lg cursor-pointer text-center text-cansat-cream not-italic no-underline;
+		@apply dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey px-2 py-1 rounded-md text-lg cursor-pointer text-center not-italic no-underline;
 	}
 
 	.tag {

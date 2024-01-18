@@ -7,7 +7,7 @@
 
 <!--Use a nav to make the purpose of this component explicit-->
 <nav
-	class="bg-cansat-black text-cansat-cream flex flex-col items-center justify-between md:flex-row md:justify-between md:content-center py-6 px-4 md:sticky top-0 z-10 [&>*]:h-min"
+	class="bg-cansat-black text-cansat-cream dark:bg-cansat-light2 dark:text-cansat-cream flex flex-col items-center justify-between md:flex-row md:justify-between md:content-center py-6 px-4 md:sticky top-0 z-10 [&>*]:h-min"
 >
 	<!--Add here a check to see if the app is running on mobile and to see if we are on the archive-->
 	{#if false || $page.url.pathname != '/24'}
@@ -23,7 +23,7 @@
 		</div>
 	{/if}
 	<div class="flex gap-6 content-center [&>*]:h-min">
-			<!--Removed the / behind the # because it was causing issues-->
+		<!--Removed the / behind the # because it was causing issues-->
 		<!--<Dropdown label="Sobre">
 			<a class="text-cansat-cream dark:text-cansat-black" href="/24#cansat">CanSat</a>
 			<a class="text-cansat-cream dark:text-cansat-black" href="/24#project">O&nbsp;Projeto</a>
@@ -33,8 +33,8 @@
 		<a class="text-cansat-cream dark:text-cansat-black" href="/24#project">Projeto</a>
 		<a class="text-cansat-cream dark:text-cansat-black" href="/24#team">Equipa</a>
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
-		<a class="text-cansat-cream" href="/24#blog">Blog</a>
-		<a class="text-cansat-cream" href="/24#sponsor">Apoios</a>
+		<a class="text-cansat-cream dark:text-cansat-black" href="/24#blog">Blog</a>
+		<a class="text-cansat-cream dark:text-cansat-black" href="/24#sponsor">Apoios</a>
 		<!--<ThemeToggle />-->
 	</div>
 </nav>

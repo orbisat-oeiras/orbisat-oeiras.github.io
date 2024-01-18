@@ -115,7 +115,11 @@
 	>
 		{#if scrollPercentage == 50}
 			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
-				<img alt="logotype" src="logo_transparente_claro.png" />
+				{#if $themeStore}
+					<img alt="logotype" src="logo_transparente_claro.png" />
+				{:else}
+					<img alt="logotype" src="logo_transparente_escuro.png" />
+				{/if}
 			</a>
 		{:else if !$themeStore || scrollPercentage >= 48}
 			<img alt="logotype" src="logo_transparente_claro.png" />
@@ -221,14 +225,16 @@
 	</div>
 </div>
 
-<h2 id="blog">Recent Posts</h2>
+<h2 id="blog">BLOG</h2>
 <!--Insert the post list-->
-<!--TODO: implement the carousel-->
 <PostList postList={data.posts} />
-<!--TODO: after the carousel is added, this won't be needed-->
-<div class="text-center my-2"><a href="/archive" class="btn text-2xl py-2 px-4">See All</a></div>
 
-<h2 id="sponsor">Com o apoio de:</h2>
+<h2 class="pt-10" id="sponsor">Com o apoio de:</h2>
+<div class="flex flex-col gap-y-20 [&>*]:w-1/2 items-center">
+	<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
+	<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
+	<img src="/logos/inovlabs.png" alt="InovLabs" />
+</div>
 
 <!--The text just ended right at the bottom of the page, and it looked odd,
 	so this adds some empty space-->
