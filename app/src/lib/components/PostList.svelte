@@ -28,7 +28,7 @@
 	}
 </script>
 
-<div class="flex overflow-hidden gap-2 justify-between w-full">
+<div class="flex overflow-hidden justify-between w-full">
 	<button
 		class="text-cansat-black bg-cansat-cream border-cansat-cream border-2 rounded border-none p-4"
 		on:pointerdown={left}
@@ -37,8 +37,7 @@
 		<slot name="left_button">&lt;</slot>
 	</button>
 	<div
-		class="
-	flex flex-grow overflow-auto overflow-x-auto snap-x snap-mandatory scroll-smooth [&>*]:snap-start [&>*]:flex-shrink-0 [&>*]:w-full [&::-webkit-scrollbar]:hidden"
+		class="flex flex-grow overflow-auto overflow-x-auto snap-x snap-mandatory scroll-smooth [&>*]:snap-start [&>*]:flex-shrink-0 [&>*]:w-full [&::-webkit-scrollbar]:hidden"
 		bind:clientWidth={current_width}
 		bind:this={container}
 		on:scroll={scroll}
