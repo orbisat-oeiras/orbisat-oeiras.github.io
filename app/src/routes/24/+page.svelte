@@ -143,43 +143,43 @@
 	<!--This structure is very repetitive, it might be worth it to
 		extract a component, or at least use an #each block-->
 	<div bind:this={scrollSnapStartMarker} class="person">
-		<img src="/team/rita.png" alt="Rita Fernandes" />
+		<img src="/team/rita.jpg" alt="Rita Fernandes" />
 		<div>
 			<h4>Rita Fernandes</h4>
-			<div>Coordenação, Hardware</div>
+			<div>Coordenação & Hardware</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/gabriel.png" alt="Gabriel Neto" />
+		<img src="/team/gabriel.jpg" alt="Gabriel Neto" />
 		<div>
 			<h4>Gabriel Neto</h4>
-			<div>Deselvolvimento científico</div>
+			<div>Desenvolvimento Científico</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/guido.png" alt="Guido Rezende" />
+		<img src="/team/guido.jpg" alt="Guido Rezende" />
 		<div>
 			<h4>Guido Rezende</h4>
-			<div>Programação da estação terra</div>
+			<div>Programação da Estação Terra</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/levi.png" alt="Levi Gomes" />
+		<img src="/team/levi.jpg" alt="Levi Gomes" />
 		<div>
 			<h4>Levi Gomes</h4>
 			<div>Programação do CanSat</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/miguel.png" alt="Miguel Monteiro" />
+		<img src="/team/miguel.jpg" alt="Miguel Monteiro" />
 		<div>
 			<h4>Miguel Monteiro</h4>
-			<div>Paraquedas e estrutura</div>
+			<div>Paraquedas & Estrutura</div>
 		</div>
 	</div>
 	<!--Get a reference to the start if the scroll snapping bounds-->
 	<div bind:this={scrollSnapEndMarker} class="person">
-		<img src="/team/filipa.png" alt="Filipa Cheng" />
+		<img src="/team/filipa.jpg" alt="Filipa Cheng" />
 		<div>
 			<h4>Filipa Cheng</h4>
 			<div>Divulgação</div>
