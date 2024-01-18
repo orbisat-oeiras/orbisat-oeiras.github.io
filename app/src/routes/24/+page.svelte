@@ -127,7 +127,20 @@
 		There is probably a better way to do this-->
 	<div class="h-[calc(55vh+160px)]" />
 {/if}
-<h2 id="project">O Projeto</h2>
+<h2 id="cansat">CANSAT</h2>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id felis ac odio eleifend dictum
+	ultrices a neque. Vestibulum non diam suscipit, interdum justo eget, volutpat enim. Vivamus
+	porttitor tempor libero, quis accumsan sapien dictum lobortis. Sed commodo luctus nisl eget
+	fringilla. Duis quis sem lacus. Fusce ac luctus orci. In in fringilla elit, nec placerat purus.
+	Nulla molestie nibh vel rutrum vulputate. Aliquam vulputate lectus vel ullamcorper consequat.
+	Pellentesque ligula enim, dignissim id lacinia a, bibendum iaculis nulla. Quisque.
+</p>
+
+<h2 id="project">PROJETO</h2>
+<h3 id="mission1">MISSÃO PRIMÁRIA</h3>
+<h3 id="objective">OBJETIVO CIENTÍFICO</h3>
+<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
 <p>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id felis ac odio eleifend dictum
 	ultrices a neque. Vestibulum non diam suscipit, interdum justo eget, volutpat enim. Vivamus
@@ -146,6 +159,8 @@
 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 	allowfullscreen
 />
+
+<h2 id="team">EQUIPA</h2>
 <div class="people">
 	<!--Get a reference to the start if the scroll snapping bounds-->
 	<!--This structure is very repetitive, it might be worth it to
