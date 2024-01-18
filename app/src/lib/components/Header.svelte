@@ -23,7 +23,6 @@
 		</div>
 	{/if}
 	<div class="flex gap-6 content-center [&>*]:h-min">
-		<Dropdown label="Sobre">
 			<!--Removed the / behind the # because it was causing issues-->
 		<!--<Dropdown label="Sobre">
 			<a class="text-cansat-cream dark:text-cansat-black" href="/24#cansat">CanSat</a>
