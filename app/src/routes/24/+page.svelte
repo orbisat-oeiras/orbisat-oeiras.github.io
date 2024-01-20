@@ -164,7 +164,13 @@
 <p>
 	Para realizar o objetivo a que nos propomos, o nosso CanSat irá usar uma câmera para captar
 	imagens da área sobrevoada. Esta câmera será modificada para permitir a captação de luz vermelha e
-	infravermelha numa só imagem. As imagens captadas serão enviadas para a estação terra, onde um
+	infravermelha numa só imagem. Decidimos usar esta técnica pois permite obter excelentes
+	resultados, como confirmámos através do estudo de Gilles Rabatel et al. <a
+		href="https://hal.science/hal-00648439/document"
+		>"Getting NDVI spectral bands from a single standard RGB digital camera: a methodological
+		approach"</a
+	>
+	As imagens captadas serão enviadas para a estação terra, onde um
 	<em>dashboard</em> irá processá-las para calcular o NDVI.
 </p>
 
