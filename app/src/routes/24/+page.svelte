@@ -245,7 +245,7 @@
 <PostList postList={data.posts} />
 
 <h2 class="pt-10" id="sponsor">Com o apoio de:</h2>
-<div class="flex flex-col gap-y-20 [&>*]:w-1/2 items-center">
+<div class="flex flex-col gap-y-20 [&>*]:w-5/6 [&>*]:md:w-1/2 items-center">
 	<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
 	<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
 	<img src="/logos/inovlabs.png" alt="InovLabs" />
