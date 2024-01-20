@@ -4,13 +4,19 @@
 @tailwind utilities;
 
 
+/*
+dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey
+
+md:w-[calc((9/16)*(100vh-120px))]
+*/
+
 @layer base {
 	* {
 		@apply font-open;
 	}
 
 	html {
-		@apply md:scroll-pt-[124px];
+		@apply md:scroll-pt-[120px];
 		@apply overflow-x-hidden;
 	}
 
@@ -24,7 +30,7 @@
 	h4,
 	h5,
 	h6 {
-		@apply underline decoration-cansat-accent font-bold;
+		@apply underline decoration-cansat-accent font-bold pb-4;
 	}
 
 	h1 {
@@ -48,7 +54,7 @@
 	}
 
 	p {
-		@apply indent-4 text-lg;
+		@apply indent-4 text-lg pb-10 text-justify;
 	}
 
 	ul {
@@ -58,7 +64,7 @@
 
 @layer components {
 	.btn {
-		@apply bg-cansat-accent px-2 py-1 rounded-md text-lg cursor-pointer text-center text-cansat-cream not-italic no-underline;
+		@apply dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey px-2 py-1 rounded-md text-lg cursor-pointer text-center not-italic no-underline;
 	}
 
 	.tag {
@@ -74,7 +80,7 @@
 	}
 
 	.person>img {
-		@apply md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[calc((9/16)*(100vh-120px))] md:right-[10vw] lg:right-[20vw] self-center;
+		@apply object-cover md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[70vh] md:right-[10vw] lg:right-[20vw] self-center;
 	}
 
 	.person:nth-child(even)>img {
@@ -86,7 +92,7 @@
 	}
 
 	.person:nth-child(even)>div {
-		@apply md:left-[10vw] lg:left-[20vw] md:items-end;
+		@apply md:left-[10vw] lg:left-[20vw] md:items-end md:text-right;
 	}
 
 	.person>div * {

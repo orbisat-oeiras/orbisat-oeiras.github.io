@@ -102,8 +102,14 @@
 			<circle cx={$cx} cy={$cy} r="9" fill="black" />
 		</mask>
 
-		<circle cx="12" cy="12" r={$r} fill="#fffde9" mask="url(#myMask2)" />
-		<g stroke="#fffde9" opacity={$opacity}>
+		<circle
+			cx="12"
+			cy="12"
+			r={$r}
+			fill={$themeStore ? '#fffde9' : '#231f20'}
+			mask="url(#myMask2)"
+		/>
+		<g stroke={$themeStore ? '#fffde9' : '#231f20'} opacity={$opacity}>
 			<line x1="12" y1="1" x2="12" y2="3" />
 			<line x1="12" y1="21" x2="12" y2="23" />
 			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />

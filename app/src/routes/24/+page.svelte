@@ -3,7 +3,7 @@
 	import PostList from '$lib/components/PostList.svelte';
 	// Import types
 	import type { PageData } from './$types';
-	import { themeStore } from '$lib/stores';
+	import { themeStore, isSmallDevice } from '$lib/stores';
 
 	// Data provided by the server load function
 	export let data: PageData;
@@ -41,10 +41,9 @@
 	let scrollSnapStartMarker: HTMLElement;
 	let scrollSnapEndMarker: HTMLElement;
 	// Bounds for scroll snapping
-	let scrollSnapStartBound: number = 200;
-	let scrollSnapEndBound: number = 50;
-	// Flag for a small device (width < 700px)
-	let isSmallDevice: boolean | undefined = undefined;
+	let scrollSnapStartAdd: number = 120;
+	let scrollSnapStartRemove: number = 200;
+	let scrollSnapEndBound: number = 60;
 
 	// This event is triggered when the user scrolls the main page
 	function handleScroll(e: UIEvent) {
@@ -59,7 +58,7 @@
 		*/
 		//if (isSmallDevice === undefined) {
 		// Update the small device flag
-		isSmallDevice = window.matchMedia('(max-width: 700px)').matches;
+		isSmallDevice.set(window.matchMedia('(max-width: 700px)').matches);
 		//console.log(isSmallDevice);
 		//}
 
@@ -82,15 +81,15 @@
 		// If snapping is disabled and we are inside the bounds, enable it
 		if (
 			!body.classList.contains('scrollsnap') &&
-			startY < scrollSnapStartBound &&
+			startY < scrollSnapStartAdd &&
 			endY > scrollSnapEndBound
 		) {
-			console.log('Adding snap');
+			console.log('Adding snap at ' + startY);
 			body.classList.add('scrollsnap');
 		}
 		// If snapping is enabled and we are outside the bounds, disable it
-		if (body.classList.contains('scrollsnap') && startY > scrollSnapStartBound) {
-			console.log('Removing snap from start');
+		if (body.classList.contains('scrollsnap') && startY > scrollSnapStartRemove) {
+			console.log('Removing snap from start at ' + startY);
 			body.classList.remove('scrollsnap');
 		}
 		if (body.classList.contains('scrollsnap') && endY < scrollSnapEndBound) {
@@ -108,14 +107,18 @@
 </svelte:head>
 
 <!--Add here a check to see if the app is running on mobile-->
-{#if !isSmallDevice}
+{#if !$isSmallDevice}
 	<div
 		class="fixed translate-x-[-50%] translate-y-[-50%] z-[11]"
 		style="left: {logoLeft}px; top: {logoTop}px; width: {logoWidth}px"
 	>
 		{#if scrollPercentage == 50}
 			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
-				<img alt="logotype" src="logo_transparente_claro.png" />
+				{#if $themeStore}
+					<img alt="logotype" src="logo_transparente_claro.png" />
+				{:else}
+					<img alt="logotype" src="logo_transparente_escuro.png" />
+				{/if}
 			</a>
 		{:else if !$themeStore || scrollPercentage >= 48}
 			<img alt="logotype" src="logo_transparente_claro.png" />
@@ -123,63 +126,113 @@
 			<img alt="logotype" src="logo_transparente_escuro.png" />
 		{/if}
 	</div>
-	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. 
-		There is probably a better way to do this-->
+	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. There is probably a better way to do this-->
 	<div class="h-[calc(55vh+160px)]" />
 {/if}
-<h2 id="project">O Projeto</h2>
+<h2 id="cansat">CANSAT</h2>
 <p>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id felis ac odio eleifend dictum
-	ultrices a neque. Vestibulum non diam suscipit, interdum justo eget, volutpat enim. Vivamus
-	porttitor tempor libero, quis accumsan sapien dictum lobortis. Sed commodo luctus nisl eget
-	fringilla. Duis quis sem lacus. Fusce ac luctus orci. In in fringilla elit, nec placerat purus.
-	Nulla molestie nibh vel rutrum vulputate. Aliquam vulputate lectus vel ullamcorper consequat.
-	Pellentesque ligula enim, dignissim id lacinia a, bibendum iaculis nulla. Quisque.
+	O CanSat Portugal é uma competição nacional promovida pela <a href="https://www.esero.pt/"
+		>ESERO Portugal</a
+	>, em parceria com a Ciência Viva e a Agência Espacial Europeia (<a
+		href="https://www.esa.int/Space_in_Member_States/Portugal">ESA</a
+	>). Esta competição desafia equipas de estudantes do ensino secundário a construirem um satélite
+	com as dimensões de uma lata de refrigerante.
 </p>
 
-<h2 id="team">A Equipa</h2>
+<h2 id="project">PROJETO</h2>
+<h3 id="mission1">MISSÃO PRIMÁRIA</h3>
+<p>
+	A missão primária, definida pela organização da competição, consiste na medição da temperatura do
+	ar e da pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a estação
+	terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
+</p>
+<h3 id="objective">OBJETIVO CIENTÍFICO</h3>
+<p>
+	O objetivo científico do nosso projeto é recolher dados sobre a saúde e densidade da vegetação na
+	área que o CanSat sobrevoar. Esses dados podem ser usados para ajudar agricultores e outras
+	entidades, fornecendo-lhes informação relevante. Para obter estes dados, iremos calcular o <em
+		>Normalized Difference Vegetation Index</em
+	>
+	(NDVI), tendo por base o estudo da NASA
+	<a href="https://core.ac.uk/download/pdf/42863365.pdf"
+		>"Using Landsat Digital Data for Estimating Green Biomass”</a
+	>, realizado por D. W. Deering e Robert H. Haas.
+</p>
+<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
+<p>
+	Para realizar o objetivo a que nos propomos, o nosso CanSat irá usar uma câmera para captar
+	imagens da área sobrevoada. Esta câmera será modificada para permitir a captação de luz vermelha e
+	infravermelha numa só imagem. Decidimos usar esta técnica pois permite obter excelentes
+	resultados, como confirmámos através do estudo de Gilles Rabatel <em>et al.</em>
+	<a href="https://hal.science/hal-00648439/document"
+		>"Getting NDVI spectral bands from a single standard RGB digital camera: a methodological
+		approach"</a
+	>
+	As imagens captadas serão enviadas para a estação terra, onde um
+	<!--
+		<em
+		class="underline decoration-dashed"
+		title="Aplicação que mostra os dados recolhidos e processados, organizados de modo a facilitar a sua
+			interpretação.">dashboard</em
+		>
+	-->
+	<em>dashboard</em>
+	irá processá-las para calcular o NDVI.
+</p>
+
+<h2 id="video">VIDEO</h2>
+<iframe
+	class="pb-10 w-full aspect-[4/3] md:aspect-video"
+	src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
+	title="YouTube video player"
+	frameborder="0"
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+	allowfullscreen
+/>
+
+<h2 id="team">EQUIPA</h2>
 <div class="people">
-	<!--Get a reference to the start if the scroll snapping bounds-->
+	<!--Get a reference to the start of the scroll snapping bounds-->
 	<!--This structure is very repetitive, it might be worth it to
 		extract a component, or at least use an #each block-->
 	<div bind:this={scrollSnapStartMarker} class="person">
-		<img src="/team/rita.png" alt="Rita Fernandes" />
+		<img src="/team/rita.jpg" alt="Rita Fernandes" />
 		<div>
 			<h4>Rita Fernandes</h4>
-			<div>Coordenação, Hardware</div>
+			<div>Coordenação & Hardware</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/gabriel.png" alt="Gabriel Neto" />
+		<img src="/team/gabriel.jpg" alt="Gabriel Neto" />
 		<div>
 			<h4>Gabriel Neto</h4>
-			<div>Deselvolvimento científico</div>
+			<div>Desenvolvimento Científico</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/guido.png" alt="Guido Rezende" />
+		<img src="/team/guido.jpg" alt="Guido Rezende" />
 		<div>
 			<h4>Guido Rezende</h4>
-			<div>Programação da estação terra</div>
+			<div>Programação da Estação Terra</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/levi.png" alt="Levi Gomes" />
+		<img src="/team/levi.jpg" alt="Levi Gomes" />
 		<div>
 			<h4>Levi Gomes</h4>
 			<div>Programação do CanSat</div>
 		</div>
 	</div>
 	<div class="person">
-		<img src="/team/miguel.png" alt="Miguel Monteiro" />
+		<img src="/team/miguel.jpg" alt="Miguel Monteiro" />
 		<div>
 			<h4>Miguel Monteiro</h4>
-			<div>Paraquedas e estrutura</div>
+			<div>Paraquedas & Estrutura</div>
 		</div>
 	</div>
-	<!--Get a reference to the start if the scroll snapping bounds-->
+	<!--Get a reference to the end of the scroll snapping bounds-->
 	<div bind:this={scrollSnapEndMarker} class="person">
-		<img src="/team/filipa.png" alt="Filipa Cheng" />
+		<img src="/team/filipa.jpg" alt="Filipa Cheng" />
 		<div>
 			<h4>Filipa Cheng</h4>
 			<div>Divulgação</div>
@@ -187,14 +240,17 @@
 	</div>
 </div>
 
-<h2 id="blog">Recent Posts</h2>
+<h2 id="blog">BLOG</h2>
 <!--Insert the post list-->
-<!--TODO: implement the carousel-->
 <PostList postList={data.posts} />
-<!--TODO: after the carousel is added, this won't be needed-->
-<div class="text-center my-2"><a href="/archive" class="btn text-2xl py-2 px-4">See All</a></div>
 
-<h2 id="sponsor">Com o apoio de:</h2>
+<h2 class="pt-10" id="sponsor">Com o apoio de:</h2>
+<div class="flex flex-col gap-y-20 [&>*]:w-5/6 [&>*]:md:w-1/2 items-center">
+	<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
+	<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
+	<img src="/logos/inovlabs.png" alt="InovLabs" />
+	<img src="/logos/valley.png" alt="Oeiras Valley" />
+</div>
 
 <!--The text just ended right at the bottom of the page, and it looked odd,
 	so this adds some empty space-->

@@ -28,9 +28,16 @@ export default {
 			},
 			cansat: {
 				black: '#231f20',
+				dark1: '#312E2F',
+				dark2: '#3F3C3F',
+				dark3: '#4B494D',
 				grey: '#58595b',
-				white: '#ffffff',
+				light1: '#918e87',
+				light2: '#b7b3a7',
+				light3: '#ddd6c3',
+				light4: '#fef9e8',
 				cream: '#fffde9',
+				white: '#ffffff',
 				accent: '#dd5928'
 			}
 		},
