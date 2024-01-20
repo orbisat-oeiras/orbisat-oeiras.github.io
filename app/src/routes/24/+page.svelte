@@ -171,7 +171,15 @@
 		approach"</a
 	>
 	As imagens captadas serão enviadas para a estação terra, onde um
-	<em>dashboard</em> irá processá-las para calcular o NDVI.
+	<!--
+		<em
+		class="underline decoration-dashed"
+		title="Aplicação que mostra os dados recolhidos e processados, organizados de modo a facilitar a sua
+			interpretação.">dashboard</em
+		>
+	-->
+	<em>dashboard</em>
+	irá processá-las para calcular o NDVI.
 </p>
 
 <h2 id="video">VIDEO</h2>
