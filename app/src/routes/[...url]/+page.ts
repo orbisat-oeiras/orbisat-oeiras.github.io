@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { page } from '$app/stores';
 
 /* The current domain (orbisat-oeiras.github.io) will most
@@ -10,6 +10,9 @@ import { page } from '$app/stores';
    TODO: should this be 301 (moved permanently) or 302 (moved temporarily)?
 */
 export function load({ params, url }) {
-	console.log(url);
+	console.log(url.toString());
+	if (url.toString().includes('/24')) {
+		throw error(404);
+	}
 	throw redirect(302, '/24/' + params.url);
 }

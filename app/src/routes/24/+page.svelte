@@ -41,7 +41,8 @@
 	let scrollSnapStartMarker: HTMLElement;
 	let scrollSnapEndMarker: HTMLElement;
 	// Bounds for scroll snapping
-	let scrollSnapStartBound: number = 100;
+	let scrollSnapStartAdd: number = 120;
+	let scrollSnapStartRemove: number = 200;
 	let scrollSnapEndBound: number = 60;
 	// Flag for a small device (width < 700px)
 	let isSmallDevice: boolean | undefined = undefined;
@@ -82,15 +83,15 @@
 		// If snapping is disabled and we are inside the bounds, enable it
 		if (
 			!body.classList.contains('scrollsnap') &&
-			startY < scrollSnapStartBound &&
+			startY < scrollSnapStartAdd &&
 			endY > scrollSnapEndBound
 		) {
-			console.log('Adding snap');
+			console.log('Adding snap at ' + startY);
 			body.classList.add('scrollsnap');
 		}
 		// If snapping is enabled and we are outside the bounds, disable it
-		if (body.classList.contains('scrollsnap') && startY > scrollSnapStartBound) {
-			console.log('Removing snap from start');
+		if (body.classList.contains('scrollsnap') && startY > scrollSnapStartRemove) {
+			console.log('Removing snap from start at ' + startY);
 			body.classList.remove('scrollsnap');
 		}
 		if (body.classList.contains('scrollsnap') && endY < scrollSnapEndBound) {
@@ -143,26 +144,28 @@
 <h2 id="project">PROJETO</h2>
 <h3 id="mission1">MISSÃO PRIMÁRIA</h3>
 <p>
-	A missão primária, definida pela organização, consiste na medição da temperatura do ar e da
-	pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a estação terra por
-	telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
+	A missão primária, definida pela organização da competição, consiste na medição da temperatura do
+	ar e da pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a estação
+	terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
 </p>
 <h3 id="objective">OBJETIVO CIENTÍFICO</h3>
 <p>
 	O objetivo científico do nosso projeto é recolher dados sobre a saúde e densidade da vegetação na
-	área que o CanSat sobrevoar, que podem ser usados para ajudar agricultores e outras entidades.
-	Para obter estes dados, iremos calcular o <em>Normalized Difference Vegetation Index</em> (NDVI),
-	como apresentado no estudo da NASA
+	área que o CanSat sobrevoar. Esses dados podem ser usados para ajudar agricultores e outras
+	entidades, fornecendo-lhes informação relevante. Para obter estes dados, iremos calcular o <em
+		>Normalized Difference Vegetation Index</em
+	>
+	(NDVI), tendo por base o estudo da NASA
 	<a href="https://core.ac.uk/download/pdf/42863365.pdf"
 		>"Using Landsat Digital Data for Estimating Green Biomass”</a
 	>, realizado por D. W. Deering e Robert H. Haas.
 </p>
 <h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
 <p>
-	Como missão secundária, o nosso CanSat irá usar uma câmera para captar imagens da área sobrevoada.
-	Esta câmera será modificada para permitir a captação de luz vermelha e infravermelha numa só
-	imagem. As imagens captadas serão enviadas para a estação terra, onde um dashboard irá
-	processá-las para calcular o NDVI.
+	Para realizar o objetivo a que nos propomos, o nosso CanSat irá usar uma câmera para captar
+	imagens da área sobrevoada. Esta câmera será modificada para permitir a captação de luz vermelha e
+	infravermelha numa só imagem. As imagens captadas serão enviadas para a estação terra, onde um
+	<em>dashboard</em> irá processá-las para calcular o NDVI.
 </p>
 
 <h2 id="video">VIDEO</h2>
@@ -234,6 +237,7 @@
 	<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
 	<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
 	<img src="/logos/inovlabs.png" alt="InovLabs" />
+	<img src="/logos/valley.png" alt="Oeiras Valley" />
 </div>
 
 <!--The text just ended right at the bottom of the page, and it looked odd,
