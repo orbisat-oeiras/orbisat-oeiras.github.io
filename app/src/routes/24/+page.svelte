@@ -3,7 +3,7 @@
 	import PostList from '$lib/components/PostList.svelte';
 	// Import types
 	import type { PageData } from './$types';
-	import { themeStore } from '$lib/stores';
+	import { themeStore, isSmallDevice } from '$lib/stores';
 
 	// Data provided by the server load function
 	export let data: PageData;
@@ -44,8 +44,6 @@
 	let scrollSnapStartAdd: number = 120;
 	let scrollSnapStartRemove: number = 200;
 	let scrollSnapEndBound: number = 60;
-	// Flag for a small device (width < 700px)
-	let isSmallDevice: boolean | undefined = undefined;
 
 	// This event is triggered when the user scrolls the main page
 	function handleScroll(e: UIEvent) {
@@ -60,7 +58,7 @@
 		*/
 		//if (isSmallDevice === undefined) {
 		// Update the small device flag
-		isSmallDevice = window.matchMedia('(max-width: 700px)').matches;
+		isSmallDevice.set(window.matchMedia('(max-width: 700px)').matches);
 		//console.log(isSmallDevice);
 		//}
 
@@ -109,7 +107,7 @@
 </svelte:head>
 
 <!--Add here a check to see if the app is running on mobile-->
-{#if !isSmallDevice}
+{#if !$isSmallDevice}
 	<div
 		class="fixed translate-x-[-50%] translate-y-[-50%] z-[11]"
 		style="left: {logoLeft}px; top: {logoTop}px; width: {logoWidth}px"
