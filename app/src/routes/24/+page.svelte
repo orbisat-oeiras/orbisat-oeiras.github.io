@@ -192,7 +192,7 @@
 
 <h2 id="team">EQUIPA</h2>
 <div class="people">
-	<!--Get a reference to the start if the scroll snapping bounds-->
+	<!--Get a reference to the start of the scroll snapping bounds-->
 	<!--This structure is very repetitive, it might be worth it to
 		extract a component, or at least use an #each block-->
 	<div bind:this={scrollSnapStartMarker} class="person">
@@ -230,7 +230,7 @@
 			<div>Paraquedas & Estrutura</div>
 		</div>
 	</div>
-	<!--Get a reference to the start if the scroll snapping bounds-->
+	<!--Get a reference to the end of the scroll snapping bounds-->
 	<div bind:this={scrollSnapEndMarker} class="person">
 		<img src="/team/filipa.jpg" alt="Filipa Cheng" />
 		<div>
