@@ -92,7 +92,7 @@ md:w-[calc((9/16)*(100vh-120px))]
 	}
 
 	.person:nth-child(even)>div {
-		@apply md:left-[10vw] lg:left-[20vw] md:items-end text-right;
+		@apply md:left-[10vw] lg:left-[20vw] md:items-end md:text-right;
 	}
 
 	.person>div * {
