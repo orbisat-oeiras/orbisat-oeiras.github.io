@@ -183,7 +183,7 @@
 <h2 id="video">VIDEO</h2>
 <iframe
 	class="pb-10 w-full aspect-[4/3] md:aspect-video"
-	src="https://www.youtube.com/embed/p3ts1383rZA?si=4hCuuej57F1CgOHs"
+	src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
 	title="YouTube video player"
 	frameborder="0"
 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
