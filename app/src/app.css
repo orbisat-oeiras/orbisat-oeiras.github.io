@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /*
 dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey
 
@@ -79,23 +78,23 @@ md:w-[calc((9/16)*(100vh-120px))]
 		@apply md:flex-row-reverse;
 	}
 
-	.person>img {
+	.person > img {
 		@apply object-cover md:relative h-[70vh] w-[39vh] md:h-[calc(100vh-120px)] md:w-[70vh] md:right-[10vw] lg:right-[20vw] self-center;
 	}
 
-	.person:nth-child(even)>img {
+	.person:nth-child(even) > img {
 		@apply md:left-[10vw] lg:left-[20vw];
 	}
 
-	.person>div {
+	.person > div {
 		@apply flex flex-col justify-center relative md:right-[10vw] lg:right-[20vw] px-3;
 	}
 
-	.person:nth-child(even)>div {
+	.person:nth-child(even) > div {
 		@apply md:left-[10vw] lg:left-[20vw] md:items-end md:text-right;
 	}
 
-	.person>div * {
+	.person > div * {
 		@apply w-fit text-3xl;
 	}
 
@@ -109,7 +108,6 @@ md:w-[calc((9/16)*(100vh-120px))]
 }
 
 @layer utilities {
-
 	/* Hide scrollbar for Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
