@@ -1,0 +1,33 @@
+name: Build site to test PRs
+
+on:
+    pull_request:
+        types:
+            - opened
+            - edited
+
+jobs:
+    build_site:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./app
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Install Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+                  #cache: npm
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: build
+              env:
+                  BASE_PATH: "/levimcgomes.github.io"
+              run: |
+                  npm run build
+                  touch build/.nojekyll
