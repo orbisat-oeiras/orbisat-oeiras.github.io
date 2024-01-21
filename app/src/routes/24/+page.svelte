@@ -59,13 +59,13 @@
 		//if (isSmallDevice === undefined) {
 		// Update the small device flag
 		isSmallDevice.set(window.matchMedia('(max-width: 700px)').matches);
-		//console.log(isSmallDevice);
+		//console.log($isSmallDevice);
 		//}
 
 		// On small devices, scroll-snapping of the team presentation
 		// doesn't feel good, so we disable it
-		if (isSmallDevice) {
-			//console.log('Small');
+		if ($isSmallDevice) {
+			console.log('Small');
 			return;
 		}
 
