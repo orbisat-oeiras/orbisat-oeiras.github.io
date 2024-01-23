@@ -47,8 +47,8 @@
 		// I dont know why this works now, nor why it didnt work before i did this. All I know is DONT REMOVE THIS
 		if (navigator.userAgent.search('Firefox') > -1) {
 			console.log('FIREFOX');
-			scrollSnapStartRemove = 110;
-			scrollSnapEndBound = 500;
+			scrollSnapStartRemove = 119;
+			scrollSnapEndBound = 121;
 		}
 	});
 	// Element bindings
