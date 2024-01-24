@@ -1,10 +1,6 @@
 name: Build site to test PRs
 
-on:
-    pull_request:
-        types:
-            - opened
-            - edited
+on: pull_request
 
 jobs:
     build_site:
