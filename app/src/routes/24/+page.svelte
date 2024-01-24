@@ -4,6 +4,7 @@
 	// Import types
 	import type { PageData } from './$types';
 	import { themeStore, isSmallDevice } from '$lib/stores';
+	import { onMount } from 'svelte';
 
 	// Data provided by the server load function
 	export let data: PageData;
@@ -37,13 +38,23 @@
 
 	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 
-	// Element bindings
-	let scrollSnapStartMarker: HTMLElement;
-	let scrollSnapEndMarker: HTMLElement;
 	// Bounds for scroll snapping
 	let scrollSnapStartAdd: number = 120;
 	let scrollSnapStartRemove: number = 200;
 	let scrollSnapEndBound: number = 60;
+
+	onMount(() => {
+		// If we are on firefox, change the scroll snapping
+		// I dont know why this works now, nor why it didnt work before i did this. All I know is DONT REMOVE THIS
+		if (navigator.userAgent.search('Firefox') > -1) {
+			console.log('FIREFOX');
+			scrollSnapStartRemove = 119;
+			scrollSnapEndBound = 121;
+		}
+	});
+	// Element bindings
+	let scrollSnapStartMarker: HTMLElement;
+	let scrollSnapEndMarker: HTMLElement;
 
 	// This event is triggered when the user scrolls the main page
 	function handleScroll(e: UIEvent) {
