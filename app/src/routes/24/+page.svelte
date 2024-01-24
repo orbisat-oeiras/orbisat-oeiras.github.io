@@ -36,12 +36,13 @@
 		logoWidth = lerp(120, innerWidth / 2, 1 - scrollPercentage * 0.02);
 	}
 
+	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
+
 	// Bounds for scroll snapping
 	let scrollSnapStartAdd: number = 120;
 	let scrollSnapStartRemove: number = 200;
 	let scrollSnapEndBound: number = 60;
 
-	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 	onMount(() => {
 		// If we are on firefox, change the scroll snapping
 		// I dont know why this works now, nor why it didnt work before i did this. All I know is DONT REMOVE THIS
