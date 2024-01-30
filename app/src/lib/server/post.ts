@@ -46,7 +46,6 @@ export function postFromPath(path: string) {
 		date_string: parsed.data['date'] as string,
 		cover_image: parsed.data['cover_image'] as string,
 		cover_image_exists: fs.existsSync(process.cwd() + '/static/' + parsed.data['cover_image']),
-		tags: parsed.data['tags'] as string[],
 		excerpt: parsed.data['excerpt'] as string,
 		content: parsed.content
 	} as Post;

@@ -46,13 +46,6 @@
 >
 	{data.post.date_string}
 </p>
-<ul class="flex flex-wrap items-center mb-8 list-none">
-	{#each data.post.tags as tag}
-		<li>
-			<a href={'/tag/' + tag} class="tag">{tag}</a>
-		</li>
-	{/each}
-</ul>
 <!--This div has all these styles because it must style all
 	of the post's content as well as itself-->
 <div
