@@ -33,7 +33,7 @@
 	<p class="text-lg py-1 mb-10 mx-4 indent-0">{post.excerpt}</p>
 	<a
 		class="group btn duration-150 absolute bottom-0 w-full rounded-none"
-		href={'/blog' + post.path.slice(11).slice(0, -3)}
+		href={'/24/blog' + post.path.slice(11).slice(0, -3)}
 		><span
 			class="transition-all duration-150 relative inline-block after:transition-all after:duration-500 after:content-['»'] after:opacity-0 after:absolute after:top-0 after:right-[-20px] group-hover:pr-6 group-hover:after:opacity-100 group-hover:after:right-0"
 			>Read More</span
