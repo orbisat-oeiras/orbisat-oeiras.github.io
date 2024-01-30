@@ -5,7 +5,6 @@ export type Post = {
 	date_string: string;
 	cover_image: string;
 	cover_image_exists: boolean;
-	tags: string[];
 	excerpt: string;
 	content: string | never;
 };
