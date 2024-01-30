@@ -1,6 +1,3 @@
-//TODO: Change this when there are posts
-export const prerender = false;
-
 // Import svelte internals
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
