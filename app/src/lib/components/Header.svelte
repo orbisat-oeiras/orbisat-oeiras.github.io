@@ -44,6 +44,6 @@
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
 		<a class="text-cansat-cream dark:text-cansat-black" href="/24#blog">Blog</a>
 		<a class="text-cansat-cream dark:text-cansat-black" href="/24#sponsor">Apoios</a>
-		<!--<ThemeToggle />-->
+		<ThemeToggle />
 	</div>
 </nav>
