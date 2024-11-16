@@ -38,14 +38,14 @@ export const load = (({ params }) => {
 		// by _ (cause next doesn't support variadic dynamic routes, w Svelte)
 		// so we do a simple redirect to ensure legacy links still work
 		if (path.includes('_') && fs.existsSync(path.replaceAll('_', '/'))) {
-			throw redirect(301, '/blog/' + params.slug.replaceAll('_', '/'));
+			redirect(301, '/blog/' + params.slug.replaceAll('_', '/'));
 		}
 		// If the link isn't a legacy one, then it points to an unexisting post
 		// So we respond with a 404 (Not Found) error
-		throw error(404, {
-			message: 'Post not found: ' + params.slug,
-			pwd: process.cwd()
-		});
+		error(404, {
+        			message: 'Post not found: ' + params.slug,
+        			pwd: process.cwd()
+        		});
 	}
 
 	return {
