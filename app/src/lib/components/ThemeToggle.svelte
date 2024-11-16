@@ -1,8 +1,51 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
+	// IMPORTANT
+	// True means light theme
+	// False means dark theme
+
+	// THEME LOGIC
 
 	import { themeStore } from '$lib/stores';
 	import { onMount } from 'svelte';
+
+	// Get the initial theme
+	function getTheme() {
+		if (import.meta.env.SSR) return false;
+		const stored = localStorage.getItem('theme');
+		if (stored) return stored === 'true';
+		else return !window.matchMedia('(prefers-color-scheme: dark)').matches;
+	}
+
+	// Update the theme, saving it on localStorage and adding the proper CSS
+	function applyTheme(theme: boolean) {
+		// When pre-rendering, we don't care about theme
+		if (import.meta.env.SSR) return;
+		// Save the theme for later
+		localStorage.setItem('theme', String(theme));
+		// Finally, set the class for tailwind
+		const body = document.getElementsByTagName('html')[0];
+		if (theme) {
+			body.classList.remove('dark');
+		} else {
+			body.classList.add('dark');
+		}
+	}
+
+	function toggleTheme() {
+		// First, set our local variable
+		theme = !theme;
+	}
+
+	let theme = $state(getTheme());
+
+	// This is called when this component is inserted into the DOM
+	onMount(() => {
+		theme = getTheme();
+		applyTheme(theme);
+	});
+
+	// ANIMATION LOGIC
+
 	// A spring is used to animate the icon
 	import { spring } from 'svelte/motion';
 
@@ -29,62 +72,18 @@
 		damping: 0.17
 	};
 
-	// Get the initial theme
-	function getTheme() {
-		if (import.meta.env.SSR) return false;
-		const stored = localStorage.getItem('theme');
-		if (stored) return stored === 'true';
-		else return !window.matchMedia('(prefers-color-scheme: dark)').matches;
-	}
+	// Create the spring
+	const propsSpring = spring(props[theme ? 'sun' : 'moon'], springConfig);
 
-	// Update the theme, saving it on localStorage and adding the proper CSS
-	function setTheme(theme: boolean) {
-		// When pre-rendering, we don't care about theme
-		if (import.meta.env.SSR) return;
-		// Save the theme for later
-		localStorage.setItem('theme', String(theme));
-		// Finally, set the class for tailwind
-		const body = document.getElementsByTagName('html')[0];
-		if (theme) {
-			body.classList.remove('dark');
-		} else {
-			body.classList.add('dark');
-		}
-	}
-
-	function toggleTheme() {
-		// First, set our local variable
-		theme = !theme;
-	}
-
-	// True means light, false means dark
-	let theme = $state(getTheme());
-	// This is called when this component is inserted into the DOM
-	onMount(() => {
-		theme = getTheme();
-		setTheme(theme);
+	// Reactive declarations: update the spring based on the theme
+	$effect(() => {
+		propsSpring.set(props[theme ? 'sun' : 'moon']);
 	});
-
-	// Create the springs
-	const r = spring(props[theme ? 'sun' : 'moon'].r, springConfig);
-	const cx = spring(props[theme ? 'sun' : 'moon'].cx, springConfig);
-	const cy = spring(props[theme ? 'sun' : 'moon'].cy, springConfig);
-	const transform = spring(props[theme ? 'sun' : 'moon'].transform, springConfig);
-	const opacity = spring(props[theme ? 'sun' : 'moon'].opacity, springConfig);
-
-	// Reactive declarations: update each of the props based on the theme
-	run(() => {
-		r.set(props[theme ? 'sun' : 'moon'].r);
-		cx.set(props[theme ? 'sun' : 'moon'].cx);
-		cy.set(props[theme ? 'sun' : 'moon'].cy);
-		transform.set(props[theme ? 'sun' : 'moon'].transform);
-		opacity.set(props[theme ? 'sun' : 'moon'].opacity);
-	});
-	run(() => {
-		setTheme(theme);
+	$effect(() => {
+		applyTheme(theme);
 	});
 	// Also propagate theme changes to the entire app
-	run(() => {
+	$effect(() => {
 		themeStore.set(theme);
 	});
 </script>
@@ -98,23 +97,22 @@
 		height="24"
 		viewBox="0 0 24 24"
 		fill="black"
-		stroke="#FFFFFF"
 		class="cursor-pointer"
-		style="transform: rotate({$transform}deg)"
+		style="transform: rotate({$propsSpring.transform}deg)"
 	>
 		<mask id="myMask2">
 			<rect x="0" y="0" width="100%" height="100%" fill="white" />
-			<circle cx={$cx} cy={$cy} r="9" fill="black" />
+			<circle cx={$propsSpring.cx} cy={$propsSpring.cy} r="9" fill="black" />
 		</mask>
 
 		<circle
 			cx="12"
 			cy="12"
-			r={$r}
-			fill={$themeStore ? '#fffde9' : '#231f20'}
+			r={$propsSpring.r}
+			fill={theme ? '#fffde9' : '#231f20'}
 			mask="url(#myMask2)"
 		/>
-		<g stroke={$themeStore ? '#fffde9' : '#231f20'} opacity={$opacity}>
+		<g stroke={theme ? '#fffde9' : '#231f20'} opacity={$propsSpring.opacity}>
 			<line x1="12" y1="1" x2="12" y2="3" />
 			<line x1="12" y1="21" x2="12" y2="23" />
 			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
