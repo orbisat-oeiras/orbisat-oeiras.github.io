@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Post } from '$lib/server/post.type';
-	import { themeStore } from '$lib/stores';
 	import PostComponent from './PostComponent.svelte';
 	import type { Snippet } from 'svelte';
 
@@ -43,9 +42,11 @@
 {#if postList.length >= 1}
 	<div class="flex overflow-hidden justify-between w-full">
 		<button
-			class="dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey border-cansat-cream border-2 rounded-none rounded-l border-none p-4"
+			class="dark:text-cansat-black text-cansat-cream border-cansat-cream border-2 rounded-none rounded-l border-none p-4 {scroll_left ==
+			0
+				? 'bg-cansat-light2 dark:bg-cansat-light2'
+				: 'bg-cansat-grey dark:bg-cansat-cream'}"
 			onpointerdown={left}
-			style="background-color: {scroll_left == 0 ? '#b7b3a7' : $themeStore ? '#58595b' : '#fffde9'}"
 		>
 			{#if left_button}{@render left_button()}{:else}&lt;{/if}
 		</button>
@@ -60,13 +61,12 @@
 			{/each}
 		</div>
 		<button
-			class="dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey border-cansat-cream border-2 rounded-none rounded-r border-none p-4"
+			class="dark:text-cansat-black text-cansat-cream border-cansat-cream border-2 rounded-none rounded-r border-none p-4 {Math.abs(
+				scroll_left + current_width - scroll_width
+			) < 3
+				? 'bg-cansat-light2 dark:bg-cansat-light2'
+				: 'bg-cansat-grey dark:bg-cansat-cream'}"
 			onpointerdown={right}
-			style="background-color: {Math.abs(scroll_left + current_width - scroll_width) < 3
-				? '#b7b3a7'
-				: $themeStore
-					? '#58595b'
-					: '#fffde9'}"
 		>
 			{#if right_button}{@render right_button()}{:else}&gt;{/if}
 		</button>
