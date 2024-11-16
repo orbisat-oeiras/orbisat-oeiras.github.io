@@ -15,7 +15,7 @@
 		"@giscus/svelte": "^2.3.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-static": "^2.0.3",
-		"@sveltejs/kit": "^1.20.4",
+		"@sveltejs/kit": "^1.30.4",
 		"@types/glob": "^8.1.0",
 		"@types/katex": "^0.16.2",
 		"@types/markdown-it": "^13.0.1",
