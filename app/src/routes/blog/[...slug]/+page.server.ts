@@ -30,8 +30,9 @@ export const load = (({ params }) => {
 		html = markdown(post.content);
 		// Use at because an invalid index is fine
 		// (this might be the first or last post)
+
 		previousPostPath = postList.at(i + 1)?.path;
-		nextPostPath = postList.at(i - 1)?.path;
+		nextPostPath = i > 0 ? postList.at(i - 1)?.path : undefined;
 	} catch (e) {
 		// For backwards compatibility
 		// The previous blog separated paths in the blog route
@@ -43,9 +44,9 @@ export const load = (({ params }) => {
 		// If the link isn't a legacy one, then it points to an unexisting post
 		// So we respond with a 404 (Not Found) error
 		error(404, {
-        			message: 'Post not found: ' + params.slug,
-        			pwd: process.cwd()
-        		});
+			message: 'Post not found: ' + params.slug,
+			pwd: process.cwd()
+		});
 	}
 
 	return {

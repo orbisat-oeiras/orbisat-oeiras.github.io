@@ -80,7 +80,7 @@
 		only going to happen on one post so...-->
 		<div class="w-1/2"></div>
 	{/if}
-	{#if data.nextPostPath !== '/blog/metroidvania/devlog0'}
+	{#if data.nextPostPath !== '/blog/undefined'}
 		<a
 			class="group btn inline-block px-5 py-0 text-center w-1/2 rounded-l-none"
 			href={data.nextPostPath}
