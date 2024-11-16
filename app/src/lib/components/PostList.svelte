@@ -2,17 +2,23 @@
 	import type { Post } from '$lib/server/post.type';
 	import { themeStore } from '$lib/stores';
 	import PostComponent from './PostComponent.svelte';
-	export let postList: Post[];
+	interface Props {
+		postList: Post[];
+		left_button?: import('svelte').Snippet;
+		right_button?: import('svelte').Snippet;
+	}
+
+	let { postList, left_button, right_button }: Props = $props();
 
 	// Carousel implementation
 	// Width of the carousel
-	let current_width = 0;
+	let current_width = $state(0);
 	// Container for the carouusel items
-	let container: HTMLElement;
+	let container: HTMLElement = $state();
 
 	// ????
-	let scroll_left = 0;
-	let scroll_width = 0;
+	let scroll_left = $state(0);
+	let scroll_width = $state(0);
 
 	// Scroll left to the next item
 	function left() {
@@ -33,16 +39,16 @@
 	<div class="flex overflow-hidden justify-between w-full">
 		<button
 			class="dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey border-cansat-cream border-2 rounded-none rounded-l border-none p-4"
-			on:pointerdown={left}
+			onpointerdown={left}
 			style="background-color: {scroll_left == 0 ? '#b7b3a7' : $themeStore ? '#58595b' : '#fffde9'}"
 		>
-			<slot name="left_button">&lt;</slot>
+			{#if left_button}{@render left_button()}{:else}&lt;{/if}
 		</button>
 		<div
 			class="flex flex-grow overflow-auto overflow-x-auto snap-x snap-mandatory scroll-smooth [&>*]:snap-start [&>*]:flex-shrink-0 [&>*]:w-full [&::-webkit-scrollbar]:hidden"
 			bind:clientWidth={current_width}
 			bind:this={container}
-			on:scroll={scroll}
+			onscroll={scroll}
 		>
 			{#each postList as post}
 				<PostComponent {post} />
@@ -50,14 +56,14 @@
 		</div>
 		<button
 			class="dark:text-cansat-black dark:bg-cansat-cream text-cansat-cream bg-cansat-grey border-cansat-cream border-2 rounded-none rounded-r border-none p-4"
-			on:pointerdown={right}
+			onpointerdown={right}
 			style="background-color: {Math.abs(scroll_left + current_width - scroll_width) < 3
 				? '#b7b3a7'
 				: $themeStore
 				? '#58595b'
 				: '#fffde9'}"
 		>
-			<slot name="right_button">&gt;</slot>
+			{#if right_button}{@render right_button()}{:else}&gt;{/if}
 		</button>
 	</div>
 {:else}

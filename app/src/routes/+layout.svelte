@@ -3,6 +3,11 @@
 	import '../app.css';
 	// Import the navbar, which is included in all routes
 	import Header from '$lib/components/Header.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <Header />
@@ -11,5 +16,5 @@
 	which adds an adequate margin to ensure lines of text aren't
 	too large-->
 <main class="py-0 px-[10%] lg:px-[20%]">
-	<slot />
+	{@render children?.()}
 </main>

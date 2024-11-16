@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	// Import components
 	import PostList from '$lib/components/PostList.svelte';
 	// Import types
@@ -7,34 +9,38 @@
 	import { onMount } from 'svelte';
 
 	// Data provided by the server load function
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	//THIS CODE IS RELATED TO THE ANIMATION OF THE LOGO TO THE NAVBAR
 
 	// The scroll of the window (how far it has scrolled)
-	let scroll: number = 0;
+	let scroll: number = $state(0);
 	// How long we have to scroll for the animation to finish (essentially, how long is the animation takes)
 	const logoAnimationScrollAmount = 500;
 	// How much we have scrolled in the animation (0 - 50)
-	let scrollPercentage = 0;
-	let innerWidth: number = 0;
-	let innerHeight: number = 0;
+	let scrollPercentage = $state(0);
+	let innerWidth: number = $state(0);
+	let innerHeight: number = $state(0);
 	// Image positioning parameters
-	let logoLeft: number;
-	let logoTop: number;
-	let logoWidth: number;
+	let logoLeft: number = $state();
+	let logoTop: number = $state();
+	let logoWidth: number = $state();
 
 	function lerp(a: number, b: number, t: number): number {
 		return a + t * (b - a);
 	}
 
-	$: {
+	run(() => {
 		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
 		scrollPercentage =
 			scroll >= logoAnimationScrollAmount ? 50 : scroll / (logoAnimationScrollAmount / 50);
 		logoLeft = lerp(76, innerWidth / 2, 1 - scrollPercentage * 0.02);
 		logoTop = lerp(60, 160 + 0.15 * innerWidth, 1 - scrollPercentage * 0.02);
 		logoWidth = lerp(120, innerWidth / 2, 1 - scrollPercentage * 0.02);
-	}
+	});
 
 	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 
@@ -53,8 +59,8 @@
 		}
 	});
 	// Element bindings
-	let scrollSnapStartMarker: HTMLElement;
-	let scrollSnapEndMarker: HTMLElement;
+	let scrollSnapStartMarker: HTMLElement = $state();
+	let scrollSnapEndMarker: HTMLElement = $state();
 
 	// This event is triggered when the user scrolls the main page
 	function handleScroll(e: UIEvent) {
@@ -111,7 +117,7 @@
 </script>
 
 <!--Binds the scroll variable to the scroll of the window-->
-<svelte:window bind:scrollY={scroll} bind:innerWidth bind:innerHeight on:scroll={handleScroll} />
+<svelte:window bind:scrollY={scroll} bind:innerWidth bind:innerHeight onscroll={handleScroll} />
 
 <svelte:head>
 	<title>OrbiSat Oeiras 24</title>
@@ -138,7 +144,7 @@
 		{/if}
 	</div>
 	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. There is probably a better way to do this-->
-	<div class="h-[calc(55vh+160px)]" />
+	<div class="h-[calc(55vh+160px)]"></div>
 {/if}
 <h2 id="cansat">CANSAT</h2>
 <p>
@@ -199,7 +205,7 @@
 	frameborder="0"
 	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 	allowfullscreen
-/>
+></iframe>
 
 <h2 id="team">EQUIPA</h2>
 <div class="people">
@@ -265,4 +271,4 @@
 
 <!--The text just ended right at the bottom of the page, and it looked odd,
 	so this adds some empty space-->
-<div class="py-12" />
+<div class="py-12"></div>

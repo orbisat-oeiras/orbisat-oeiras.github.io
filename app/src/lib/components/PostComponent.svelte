@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { Post } from '$lib/server/post.type';
 
-	export let post: Post;
+	interface Props {
+		post: Post;
+	}
+
+	let { post }: Props = $props();
 </script>
 
 <div class="w-auto relative overflow-hidden min-h-[35vh]">

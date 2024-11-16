@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { themeStore } from '$lib/stores';
 	import { onMount } from 'svelte';
 	// A spring is used to animate the icon
@@ -55,7 +57,7 @@
 	}
 
 	// True means light, false means dark
-	let theme = getTheme();
+	let theme = $state(getTheme());
 	// This is called when this component is inserted into the DOM
 	onMount(() => {
 		theme = getTheme();
@@ -70,22 +72,24 @@
 	const opacity = spring(props[theme ? 'sun' : 'moon'].opacity, springConfig);
 
 	// Reactive declarations: update each of the props based on the theme
-	$: {
+	run(() => {
 		r.set(props[theme ? 'sun' : 'moon'].r);
 		cx.set(props[theme ? 'sun' : 'moon'].cx);
 		cy.set(props[theme ? 'sun' : 'moon'].cy);
 		transform.set(props[theme ? 'sun' : 'moon'].transform);
 		opacity.set(props[theme ? 'sun' : 'moon'].opacity);
-	}
-	$: setTheme(theme);
+	});
+	run(() => {
+		setTheme(theme);
+	});
 	// Also propagate theme changes to the entire app
-	$: {
+	run(() => {
 		themeStore.set(theme);
-	}
+	});
 </script>
 
 <!--Toggle the theme when the component is clicked-->
-<button on:click={toggleTheme}>
+<button onclick={toggleTheme}>
 	<!--It's SVG, and it looks good. That's all I know-->
 	<svg
 		xmlns="http://www.w3.org/2000/svg"

@@ -2,12 +2,16 @@
 	import type { PageData } from './$types';
 
 	// Data loaded on the server
-	export let data: PageData;
 
 	// Import Giscus to handle comments
 	import Giscus from '@giscus/svelte';
 	// Get a reference to the theme state (light or dark)
 	import { themeStore } from '$lib/stores';
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	// Update Giscus whenever the theme changes
 	themeStore.subscribe((value) => {
 		try {
@@ -72,7 +76,7 @@
 		<!--just so the next one stays on the right,
 		there are probably better solutions to this, but it's
 		only going to happen on one post so...-->
-		<div class="w-1/2" />
+		<div class="w-1/2"></div>
 	{/if}
 	{#if data.nextPostPath !== '/blog/metroidvania/devlog0'}
 		<a
