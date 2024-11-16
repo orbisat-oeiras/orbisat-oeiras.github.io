@@ -7,11 +7,13 @@
 	import Giscus from '@giscus/svelte';
 	// Get a reference to the theme state (light or dark)
 	import { themeStore } from '$lib/stores';
+
 	interface Props {
 		data: PageData;
 	}
 
 	let { data }: Props = $props();
+
 	// Update Giscus whenever the theme changes
 	themeStore.subscribe((value) => {
 		try {

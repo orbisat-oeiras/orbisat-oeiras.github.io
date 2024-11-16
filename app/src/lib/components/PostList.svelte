@@ -2,10 +2,12 @@
 	import type { Post } from '$lib/server/post.type';
 	import { themeStore } from '$lib/stores';
 	import PostComponent from './PostComponent.svelte';
+	import type { Snippet } from 'svelte';
+
 	interface Props {
 		postList: Post[];
-		left_button?: import('svelte').Snippet;
-		right_button?: import('svelte').Snippet;
+		left_button?: Snippet;
+		right_button?: Snippet;
 	}
 
 	let { postList, left_button, right_button }: Props = $props();
@@ -14,7 +16,7 @@
 	// Width of the carousel
 	let current_width = $state(0);
 	// Container for the carouusel items
-	let container: HTMLElement = $state();
+	let container: HTMLElement | undefined = $state();
 
 	// ????
 	let scroll_left = $state(0);
@@ -22,16 +24,19 @@
 
 	// Scroll left to the next item
 	function left() {
-		container.scrollBy(-current_width, 0);
+		container?.scrollBy(-current_width, 0);
 	}
 
 	// Scroll right to the next item
 	function right() {
-		container.scrollBy(current_width, 0);
+		container?.scrollBy(current_width, 0);
 	}
+
 	function scroll() {
-		scroll_left = container.scrollLeft;
-		scroll_width = container.scrollWidth;
+		if (container) {
+			scroll_left = container.scrollLeft;
+			scroll_width = container.scrollWidth;
+		}
 	}
 </script>
 
@@ -60,8 +65,8 @@
 			style="background-color: {Math.abs(scroll_left + current_width - scroll_width) < 3
 				? '#b7b3a7'
 				: $themeStore
-				? '#58595b'
-				: '#fffde9'}"
+					? '#58595b'
+					: '#fffde9'}"
 		>
 			{#if right_button}{@render right_button()}{:else}&gt;{/if}
 		</button>

@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
+		// TODO: Why is this here??
 		isSmallDevice.set(window.matchMedia('(max-width: 700px)').matches);
 	});
 </script>
@@ -17,6 +18,7 @@
 	style={$isSmallDevice ? 'margin-bottom: 40px' : ''}
 >
 	<!--Add here a check to see if the app is running on mobile and to see if we are on the archive-->
+	<!--TODO: Why??-->
 	{#if $isSmallDevice || $page.url.pathname != '/24'}
 		<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
 			<!--<h2 class="no-underline text-grey-900 not-italic">How I Made A Game</h2>-->

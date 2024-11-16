@@ -3,6 +3,7 @@
 	import '../app.css';
 	// Import the navbar, which is included in all routes
 	import Header from '$lib/components/Header.svelte';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}

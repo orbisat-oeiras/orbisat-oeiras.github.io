@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	// A spring is used to animate the icon
 	import { spring } from 'svelte/motion';
+
 	// Store both the sun's and the moon's properties
 	const props = {
 		sun: {

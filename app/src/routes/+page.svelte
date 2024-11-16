@@ -8,8 +8,8 @@
 	import { themeStore, isSmallDevice } from '$lib/stores';
 	import { onMount } from 'svelte';
 
-	// Data provided by the server load function
 	interface Props {
+		// Data provided by the server load function
 		data: PageData;
 	}
 
@@ -25,14 +25,15 @@
 	let innerWidth: number = $state(0);
 	let innerHeight: number = $state(0);
 	// Image positioning parameters
-	let logoLeft: number = $state();
-	let logoTop: number = $state();
-	let logoWidth: number = $state();
+	let logoLeft: number = $state(0);
+	let logoTop: number = $state(0);
+	let logoWidth: number = $state(0);
 
 	function lerp(a: number, b: number, t: number): number {
 		return a + t * (b - a);
 	}
 
+	// TODO: fix this animation...
 	run(() => {
 		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
 		scrollPercentage =
@@ -43,6 +44,7 @@
 	});
 
 	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
+	// TODO: fix this
 
 	// Bounds for scroll snapping
 	let scrollSnapStartAdd: number = 120;

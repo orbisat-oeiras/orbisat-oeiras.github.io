@@ -5,8 +5,9 @@
 
 	// Internal state to keep track of the dropdown
 	let isExpanded = $state(false);
-	// Prop to control the label shown on the dropdown
+
 	interface Props {
+		// Prop to control the label shown on the dropdown
 		label: string;
 		children?: Snippet;
 	}
