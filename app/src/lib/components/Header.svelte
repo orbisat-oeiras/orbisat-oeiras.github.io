@@ -14,7 +14,7 @@
 
 <!--Use a nav to make the purpose of this component explicit-->
 <nav
-	class="bg-cansat-black text-cansat-cream dark:bg-cansat-light2 dark:text-cansat-cream flex flex-col items-center justify-between md:flex-row md:justify-between md:content-center py-6 px-4 md:sticky top-0 z-10 [&>*]:h-min"
+	class="bg-invariant-bg text-invariant-fg dark:bg-invariant-bg dark:text-invariant-fg flex flex-col items-center justify-between md:flex-row md:justify-between md:content-center py-6 px-4 md:sticky top-0 z-10 [&>*]:h-min"
 	style={$isSmallDevice ? 'margin-bottom: 40px' : ''}
 >
 	<!--Add here a check to see if the app is running on mobile and to see if we are on the archive-->
@@ -34,16 +34,28 @@
 	<div class="flex gap-6 content-center [&>*]:h-min">
 		<!--Removed the / behind the # because it was causing issues-->
 		<!--<Dropdown label="Sobre">
-			<a class="text-cansat-cream dark:text-cansat-black" href="/24#cansat">CanSat</a>
-			<a class="text-cansat-cream dark:text-cansat-black" href="/24#project">O&nbsp;Projeto</a>
-			<a class="text-cansat-cream dark:text-cansat-black" href="/24#team">A&nbsp;Equipa</a>
-		</Dropdown-->
-		<a class="text-cansat-cream dark:text-cansat-black" href="/24#cansat">CanSat</a>
-		<a class="text-cansat-cream dark:text-cansat-black" href="/24#project">Projeto</a>
-		<a class="text-cansat-cream dark:text-cansat-black" href="/24#team">Equipa</a>
+			<a href="/24#cansat"
+				><span class="transition-colors duration-reset text-light-ui-fg dark:text-dark-ui-fg"
+					>CanSat</span
+				></a
+			>
+			<a href="/24#project"
+				><span class="transition-colors duration-reset text-light-ui-fg dark:text-dark-ui-fg"
+					>O&nbsp;Projeto</span
+				></a
+			>
+			<a href="/24#team"
+				><span class="transition-colors duration-reset text-light-ui-fg dark:text-dark-ui-fg"
+					>A&nbsp;Equipa</span
+				></a
+			>
+		</Dropdown>-->
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#cansat">CanSat</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#project">Projeto</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#team">Equipa</a>
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
-		<a class="text-cansat-cream dark:text-cansat-black" href="/24#blog">Blog</a>
-		<a class="text-cansat-cream dark:text-cansat-black" href="/24#sponsor">Apoios</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#blog">Blog</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#sponsor">Apoios</a>
 		<ThemeToggle />
 	</div>
 </nav>

@@ -1,45 +1,67 @@
+// Colour aliases
+let colours = {
+	dark1: '#312E2F',
+	dark2: '#4E4A4C',
+	dark3: '#6C6869',
+	dark4: '#898586',
+	light1: '#A6A4A3',
+	light2: '#C3C3C1',
+	light3: '#E1E1E1',
+	light4: '#FEFEFE',
+	black: '#231F20',
+	grey: '#58595B',
+	cream: '#FFFDE9',
+	white: '#FEFEFE',
+	accent: '#DD5928'
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: 'class',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		colors: {
-			grey: {
-				100: '#14131D',
-				200: '#282C36',
-				300: '#41454E',
-				400: '#5E6167',
-				500: '#808080',
-				600: '#9D9C9C',
-				700: '#BAB8B7',
-				800: '#D8D5D2',
-				900: '#F5F2ED'
+			light: {
+				bg: colours.cream,
+				fg: colours.black,
+				muted: colours.dark3,
+				ui: {
+					bg: colours.grey,
+					fg: colours.white,
+					muted: colours.light2
+				},
+				special: {
+					bg: colours.light4,
+					fg: colours.grey,
+					muted: colours.light3
+				}
 			},
-			accent: {
-				100: '#072323',
-				200: '#0A4342',
-				300: '#0B6362',
-				400: '#098381',
-				500: '#05A3A1',
-				600: '#2BB6B4',
-				700: '#59C9C8',
-				800: '#8FDCDB',
-				900: '#CCEFEF'
+			dark: {
+				bg: colours.grey,
+				fg: colours.cream,
+				muted: colours.light3,
+				ui: {
+					bg: colours.light3,
+					fg: colours.black,
+					muted: colours.dark3
+				},
+				special: {
+					bg: colours.dark1,
+					fg: colours.white,
+					muted: colours.dark2
+				}
 			},
-			cansat: {
-				black: '#231f20',
-				dark1: '#312E2F',
-				dark2: '#3F3C3F',
-				dark3: '#4B494D',
-				grey: '#58595b',
-				light1: '#918e87',
-				light2: '#b7b3a7',
-				light3: '#ddd6c3',
-				light4: '#fef9e8',
-				cream: '#fffde9',
-				white: '#ffffff',
-				accent: '#dd5928'
-			}
+			invariant: {
+				bg: colours.black,
+				fg: colours.cream,
+				muted: colours.white,
+				ui: {
+					bg: colours.grey,
+					fg: colours.cream,
+					muted: colours.light2
+				}
+			},
+			accent: colours.accent
 		},
 		fontFamily: {
 			open: ['Open Sans', 'sans-serif']

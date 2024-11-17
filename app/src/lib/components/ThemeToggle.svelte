@@ -105,14 +105,8 @@
 			<circle cx={$propsSpring.cx} cy={$propsSpring.cy} r="9" fill="black" />
 		</mask>
 
-		<circle
-			cx="12"
-			cy="12"
-			r={$propsSpring.r}
-			fill={theme ? '#fffde9' : '#231f20'}
-			mask="url(#myMask2)"
-		/>
-		<g stroke={theme ? '#fffde9' : '#231f20'} opacity={$propsSpring.opacity}>
+		<circle cx="12" cy="12" r={$propsSpring.r} fill="#fffde9" mask="url(#myMask2)" />
+		<g stroke="#fffde9" opacity={$propsSpring.opacity}>
 			<line x1="12" y1="1" x2="12" y2="3" />
 			<line x1="12" y1="21" x2="12" y2="23" />
 			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />

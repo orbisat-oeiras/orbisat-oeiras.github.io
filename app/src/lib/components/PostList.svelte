@@ -42,10 +42,10 @@
 {#if postList.length >= 1}
 	<div class="flex overflow-hidden justify-between w-full">
 		<button
-			class="dark:text-cansat-black text-cansat-cream border-cansat-cream border-2 rounded-none rounded-l border-none p-4 {scroll_left ==
+			class="text-light-ui-fg dark:text-dark-ui-fg rounded-none rounded-l border-none p-4 {scroll_left ==
 			0
-				? 'bg-cansat-light2 dark:bg-cansat-light2'
-				: 'bg-cansat-grey dark:bg-cansat-cream'}"
+				? 'bg-light-ui-muted dark:bg-dark-ui-muted'
+				: 'bg-light-ui-bg dark:bg-dark-ui-bg'}"
 			onpointerdown={left}
 		>
 			{#if left_button}{@render left_button()}{:else}&lt;{/if}
@@ -61,11 +61,11 @@
 			{/each}
 		</div>
 		<button
-			class="dark:text-cansat-black text-cansat-cream border-cansat-cream border-2 rounded-none rounded-r border-none p-4 {Math.abs(
+			class="text-light-ui-fg dark:text-dark-ui-fg rounded-none rounded-r border-none p-4 {Math.abs(
 				scroll_left + current_width - scroll_width
 			) < 3
-				? 'bg-cansat-light2 dark:bg-cansat-light2'
-				: 'bg-cansat-grey dark:bg-cansat-cream'}"
+				? 'bg-light-ui-muted dark:bg-dark-ui-muted'
+				: 'bg-light-ui-bg dark:bg-dark-ui-bg'}"
 			onpointerdown={right}
 		>
 			{#if right_button}{@render right_button()}{:else}&gt;{/if}
