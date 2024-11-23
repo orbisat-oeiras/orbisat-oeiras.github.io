@@ -98,11 +98,13 @@
 </d>
 
 <Giscus
-	repo="levimcgomes/levimcgomes.github.io"
-	repoId="R_kgDOH_rqaA"
+	id="comments"
+	repo="orbisat-oeiras/orbisat-oeiras.github.io"
+	repoId="R_kgDOLBzWgw"
 	category="Blog Comments"
-	categoryId="DIC_kwDOH_rqaM4CVNZX"
+	categoryId="DIC_kwDOLBzWg84Cki1t"
 	mapping="pathname"
+	term=""
 	strict="0"
 	reactionsEnabled="1"
 	emitMetadata="0"
