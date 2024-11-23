@@ -147,6 +147,7 @@
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		allowfullscreen
 	></iframe>
+	<h2 id="team" class="mb-[-80px]">EQUIPA</h2>
 </main>
 <TeamPresentation />
 <main class="py-0 px-[10%] lg:px-[20%]">

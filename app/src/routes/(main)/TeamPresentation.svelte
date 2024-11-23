@@ -54,7 +54,7 @@
 	});
 </script>
 
-<div class="relative pt-[120px]">
+<div class="relative">
 	{#each teamMembers as member, i (member.name)}
 		<section class="team-member h-screen flex flex-col">
 			<div class="shrink-0 h-[120px]"></div>
