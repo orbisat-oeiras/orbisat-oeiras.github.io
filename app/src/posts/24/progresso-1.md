@@ -13,7 +13,7 @@ Quem diria que fazer um CanSat requer tantos conhecimentos? Muita gente, provave
 
 ## Protótipos
 
-A equipa da eletrónica também tem andado ocupada, e já tem (temos) um circuito capaz de cumprir a missão primária. Segundo (a) Rita (Fernades), responsável pelo hardware, "[sobre o estado atual do hardware e desafios futuros]". Claro está, o hardware não serve de nada sem um programa que o acompanhe. (O) Levi (Gomes), encarregado de desenvolver o software para o CanSat propriamente dito, considera que "[sobre o estado atual do software e desafios futuros]".
+A equipa da eletrónica também tem andado ocupada, e já tem (temos) um circuito capaz de cumprir a missão primária. Segundo (a) Rita (Fernandes), responsável pelo hardware, "[sobre o estado atual do hardware e desafios futuros]". Claro está, o hardware não serve de nada sem um programa que o acompanhe. (O) Levi (Gomes), encarregado de desenvolver o software para o CanSat propriamente dito, considera que "[sobre o estado atual do software e desafios futuros]".
 
 Quanto ao dashboard que irá mostrar todos os dados na estação Terra, "[sobre o estado atual do dashboard e desafios futuros]", explica (o) Guido (Rezende), (incumbido - estou a ficar sem sinónimos...) do seu desenvolvimento.
 

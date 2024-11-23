@@ -13,7 +13,7 @@ export const load = (({ params }) => {
 	// Compute the current post path
 	const path = './src/posts/' + params.slug + '.md';
 	// Declare return variables
-	// This is necessary because they are set inside a try blockk
+	// This is necessary because they are set inside a try block
 	// but must exist outside of it's scope in order to be returned
 	let post: Post;
 	let html: string;

@@ -53,7 +53,7 @@
 
 	onMount(() => {
 		// If we are on firefox, change the scroll snapping
-		// I dont know why this works now, nor why it didnt work before i did this. All I know is DONT REMOVE THIS
+		// I don't know why this works now, nor why it didn't work before i did this. All I know is DON'T REMOVE THIS
 		if (navigator.userAgent.search('Firefox') > -1) {
 			console.log('FIREFOX');
 			scrollSnapStartRemove = 119;

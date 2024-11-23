@@ -14,7 +14,7 @@
 	// Carousel implementation
 	// Width of the carousel
 	let current_width = $state(0);
-	// Container for the carouusel items
+	// Container for the carousel items
 	let container: HTMLElement | undefined = $state();
 
 	// ????

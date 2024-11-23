@@ -89,19 +89,20 @@ const mediaContainer: MD_Container.ContainerOpts = {
 				);
 			}
 		} else {
-			// Container end: close the figure, this way everythin in between will
+			// Container end: close the figure, this way everything in between will
 			// be treated as the caption
 			return '</figcaption></figure>';
 		}
 	}
 };
-// This is used in exatly one post in the original blog,
+
+// This is used in exactly one post in the original blog,
 // and it doesn't even work
 const quoteContainer: MD_Container.ContainerOpts = {
 	marker: '@',
 	validate: () => true,
 	render: function (tokens, idx) {
-		if (tokens[idx].nesting === 1) return '<div class="quote-surrond">';
+		if (tokens[idx].nesting === 1) return '<div class="quote-surround">';
 		else return '</div>';
 	}
 };
