@@ -66,12 +66,14 @@
 <d class="flex mt-8">
 	{#if data.previousPostPath !== '/blog/undefined'}
 		<a
-			class="group btn inline-block px-5 py-0 text-center w-1/2 rounded-r-none"
+			class="group btn duration-150 inline-block px-5 py-0 text-center w-1/2 rounded-r-none"
 			href={data.previousPostPath}
 		>
 			<span
-				class="relative transition-all before:content-['«'] before:absolute before:opacity-0 before:-left-5 before:transition-all group-hover:before:opacity-100 group-hover:before:left-0 group-hover:pl-6"
-				>Previous Post</span
+				class="relative transition-all before:content-['«'] before:absolute before:opacity-0 before:left-[-20px] before:top-0 before:transition-all before:duration-150 group-hover:before:opacity-100 group-hover:before:left-0 group-hover:pl-6"
+				><span class="transition-color duration-150 text-light-ui-fg dark:text-dark-ui-fg"
+					>Previous Post</span
+				></span
 			>
 		</a>
 	{:else}
@@ -82,12 +84,14 @@
 	{/if}
 	{#if data.nextPostPath !== '/blog/undefined'}
 		<a
-			class="group btn inline-block px-5 py-0 text-center w-1/2 rounded-l-none"
+			class="group btn duration-150 inline-block px-5 py-0 text-center w-1/2 rounded-l-none"
 			href={data.nextPostPath}
 		>
 			<span
-				class="relative transition-all after:content-['»'] after:absolute after:opacity-0 after:-right-5 after:transition-all group-hover:after:opacity-100 group-hover:after:right-0 group-hover:pr-6"
-				>Next Post</span
+				class="relative transition-all duration-150 after:content-['»'] after:absolute after:opacity-0 after:right-[-20px] after:top-0 after:transition-all group-hover:after:opacity-100 group-hover:after:right-0 group-hover:pr-6"
+				><span class="transition-color duration-150 text-light-ui-fg dark:text-dark-ui-fg"
+					>Next Post</span
+				></span
 			>
 		</a>
 	{/if}
