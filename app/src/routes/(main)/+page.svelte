@@ -1,6 +1,7 @@
 <script lang="ts">
 	// Import components
 	import PostList from '$lib/components/PostList.svelte';
+	import Header from '$lib/components/Header.svelte';
 	// Import types
 	import type { PageData } from './$types';
 	import { themeStore, isSmallDevice } from '$lib/stores';
@@ -95,134 +96,135 @@
 	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
 
+<Header />
 <!--The actual content of the page is wrapped inside this main,
 	which adds an adequate margin to ensure lines of text aren't
 	too large-->
 <main class="py-0 px-[10%] lg:px-[20%]">
-<h2 id="cansat">CANSAT</h2>
-<p>
-	O CanSat Portugal é uma competição nacional promovida pela <a href="https://www.esero.pt/"
-		>ESERO Portugal</a
-	>, em parceria com a Ciência Viva e a Agência Espacial Europeia (<a
-		href="https://www.esa.int/Space_in_Member_States/Portugal">ESA</a
-	>). Esta competição desafia equipas de estudantes do ensino secundário a construirem um satélite
-	com as dimensões de uma lata de refrigerante.
-</p>
+	<h2 id="cansat">CANSAT</h2>
+	<p>
+		O CanSat Portugal é uma competição nacional promovida pela <a href="https://www.esero.pt/"
+			>ESERO Portugal</a
+		>, em parceria com a Ciência Viva e a Agência Espacial Europeia (<a
+			href="https://www.esa.int/Space_in_Member_States/Portugal">ESA</a
+		>). Esta competição desafia equipas de estudantes do ensino secundário a construirem um satélite
+		com as dimensões de uma lata de refrigerante.
+	</p>
 
-<h2 id="project">PROJETO</h2>
-<h3 id="mission1">MISSÃO PRIMÁRIA</h3>
-<p>
-	A missão primária, definida pela organização da competição, consiste na medição da temperatura do
-	ar e da pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a estação
-	terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
-</p>
-<h3 id="objective">OBJETIVO CIENTÍFICO</h3>
-<p>
-	O objetivo científico do nosso projeto é recolher dados sobre a saúde e densidade da vegetação na
-	área que o CanSat sobrevoar. Esses dados podem ser usados para ajudar agricultores e outras
-	entidades, fornecendo-lhes informação relevante. Para obter estes dados, iremos calcular o <em
-		>Normalized Difference Vegetation Index</em
-	>
-	(NDVI), tendo por base o estudo da NASA
-	<a href="https://core.ac.uk/download/pdf/42863365.pdf"
-		>"Using Landsat Digital Data for Estimating Green Biomass”</a
-	>, realizado por D. W. Deering e Robert H. Haas.
-</p>
-<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
-<p>
-	Para realizar o objetivo a que nos propomos, o nosso CanSat irá usar uma câmera para captar
-	imagens da área sobrevoada. Esta câmera será modificada para permitir a captação de luz vermelha e
-	infravermelha numa só imagem. Decidimos usar esta técnica pois permite obter excelentes
-	resultados, como confirmámos através do estudo de Gilles Rabatel <em>et al.</em>
-	<a href="https://hal.science/hal-00648439/document"
-		>"Getting NDVI spectral bands from a single standard RGB digital camera: a methodological
-		approach"</a
-	>
-	As imagens captadas serão enviadas para a estação terra, onde um
-	<!--
+	<h2 id="project">PROJETO</h2>
+	<h3 id="mission1">MISSÃO PRIMÁRIA</h3>
+	<p>
+		A missão primária, definida pela organização da competição, consiste na medição da temperatura
+		do ar e da pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a
+		estação terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
+	</p>
+	<h3 id="objective">OBJETIVO CIENTÍFICO</h3>
+	<p>
+		O objetivo científico do nosso projeto é recolher dados sobre a saúde e densidade da vegetação
+		na área que o CanSat sobrevoar. Esses dados podem ser usados para ajudar agricultores e outras
+		entidades, fornecendo-lhes informação relevante. Para obter estes dados, iremos calcular o <em
+			>Normalized Difference Vegetation Index</em
+		>
+		(NDVI), tendo por base o estudo da NASA
+		<a href="https://core.ac.uk/download/pdf/42863365.pdf"
+			>"Using Landsat Digital Data for Estimating Green Biomass”</a
+		>, realizado por D. W. Deering e Robert H. Haas.
+	</p>
+	<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
+	<p>
+		Para realizar o objetivo a que nos propomos, o nosso CanSat irá usar uma câmera para captar
+		imagens da área sobrevoada. Esta câmera será modificada para permitir a captação de luz vermelha
+		e infravermelha numa só imagem. Decidimos usar esta técnica pois permite obter excelentes
+		resultados, como confirmámos através do estudo de Gilles Rabatel <em>et al.</em>
+		<a href="https://hal.science/hal-00648439/document"
+			>"Getting NDVI spectral bands from a single standard RGB digital camera: a methodological
+			approach"</a
+		>
+		As imagens captadas serão enviadas para a estação terra, onde um
+		<!--
 		<em
 		class="underline decoration-dashed"
 		title="Aplicação que mostra os dados recolhidos e processados, organizados de modo a facilitar a sua
 			interpretação.">dashboard</em
 		>
 	-->
-	<em>dashboard</em>
-	irá processá-las para calcular o NDVI.
-</p>
+		<em>dashboard</em>
+		irá processá-las para calcular o NDVI.
+	</p>
 
-<h2 id="video">VIDEO</h2>
-<iframe
-	class="pb-10 w-full aspect-[4/3] md:aspect-video"
-	src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
-	title="YouTube video player"
-	frameborder="0"
-	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-	allowfullscreen
-></iframe>
+	<h2 id="video">VIDEO</h2>
+	<iframe
+		class="pb-10 w-full aspect-[4/3] md:aspect-video"
+		src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
+		title="YouTube video player"
+		frameborder="0"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		allowfullscreen
+	></iframe>
 
-<h2 id="team">EQUIPA</h2>
-<div class="people">
-	<!--Get a reference to the start of the scroll snapping bounds-->
-	<!--This structure is very repetitive, it might be worth it to
+	<h2 id="team">EQUIPA</h2>
+	<div class="people">
+		<!--Get a reference to the start of the scroll snapping bounds-->
+		<!--This structure is very repetitive, it might be worth it to
 		extract a component, or at least use an #each block-->
-	<div bind:this={scrollSnapStartMarker} class="person">
-		<img src="/team/rita.jpg" alt="Rita Fernandes" />
-		<div>
-			<h4>Rita Fernandes</h4>
-			<div>Coordenação & Hardware</div>
+		<div bind:this={scrollSnapStartMarker} class="person">
+			<img src="/team/rita.jpg" alt="Rita Fernandes" />
+			<div>
+				<h4>Rita Fernandes</h4>
+				<div>Coordenação & Hardware</div>
+			</div>
+		</div>
+		<div class="person">
+			<img src="/team/gabriel.jpg" alt="Gabriel Neto" />
+			<div>
+				<h4>Gabriel Neto</h4>
+				<div>Desenvolvimento Científico</div>
+			</div>
+		</div>
+		<div class="person">
+			<img src="/team/guido.jpg" alt="Guido Rezende" />
+			<div>
+				<h4>Guido Rezende</h4>
+				<div>Programação da Estação Terra</div>
+			</div>
+		</div>
+		<div class="person">
+			<img src="/team/levi.jpg" alt="Levi Gomes" />
+			<div>
+				<h4>Levi Gomes</h4>
+				<div>Programação do CanSat</div>
+			</div>
+		</div>
+		<div class="person">
+			<img src="/team/miguel.jpg" alt="Miguel Monteiro" />
+			<div>
+				<h4>Miguel Monteiro</h4>
+				<div>Paraquedas & Estrutura</div>
+			</div>
+		</div>
+		<!--Get a reference to the end of the scroll snapping bounds-->
+		<div bind:this={scrollSnapEndMarker} class="person">
+			<img src="/team/filipa.jpg" alt="Filipa Cheng" />
+			<div>
+				<h4>Filipa Cheng</h4>
+				<div>Divulgação</div>
+			</div>
 		</div>
 	</div>
-	<div class="person">
-		<img src="/team/gabriel.jpg" alt="Gabriel Neto" />
-		<div>
-			<h4>Gabriel Neto</h4>
-			<div>Desenvolvimento Científico</div>
-		</div>
-	</div>
-	<div class="person">
-		<img src="/team/guido.jpg" alt="Guido Rezende" />
-		<div>
-			<h4>Guido Rezende</h4>
-			<div>Programação da Estação Terra</div>
-		</div>
-	</div>
-	<div class="person">
-		<img src="/team/levi.jpg" alt="Levi Gomes" />
-		<div>
-			<h4>Levi Gomes</h4>
-			<div>Programação do CanSat</div>
-		</div>
-	</div>
-	<div class="person">
-		<img src="/team/miguel.jpg" alt="Miguel Monteiro" />
-		<div>
-			<h4>Miguel Monteiro</h4>
-			<div>Paraquedas & Estrutura</div>
-		</div>
-	</div>
-	<!--Get a reference to the end of the scroll snapping bounds-->
-	<div bind:this={scrollSnapEndMarker} class="person">
-		<img src="/team/filipa.jpg" alt="Filipa Cheng" />
-		<div>
-			<h4>Filipa Cheng</h4>
-			<div>Divulgação</div>
-		</div>
-	</div>
-</div>
 
-<h2 id="blog">BLOG</h2>
-<!--Insert the post list-->
-<PostList postList={data.posts} />
+	<h2 id="blog">BLOG</h2>
+	<!--Insert the post list-->
+	<PostList postList={data.posts} />
 
-<h2 class="pt-10" id="sponsor">Com o apoio de:</h2>
-<div class="flex flex-col gap-y-20 [&>*]:w-5/6 [&>*]:md:w-1/2 items-center">
-	<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
-	<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
-	<img src="/logos/inovlabs.png" alt="InovLabs" />
-	<img src="/logos/valley.png" alt="Oeiras Valley" />
-</div>
+	<h2 class="pt-10" id="sponsor">Com o apoio de:</h2>
+	<div class="flex flex-col gap-y-20 [&>*]:w-5/6 [&>*]:md:w-1/2 items-center">
+		<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
+		<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
+		<img src="/logos/inovlabs.png" alt="InovLabs" />
+		<img src="/logos/valley.png" alt="Oeiras Valley" />
+	</div>
 
-<!--The text just ended right at the bottom of the page, and it looked odd,
+	<!--The text just ended right at the bottom of the page, and it looked odd,
 	so this adds some empty space-->
-<div class="py-12"></div>
+	<div class="py-12"></div>
 </main>
