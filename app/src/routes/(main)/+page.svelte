@@ -39,14 +39,14 @@
 			onLeave: (_) => {
 				console.log('onLeave');
 
-				if (logoImage && themeStore) {
+				if (logoImage && $themeStore) {
 					logoImage.src = '/logo_transparente_claro.png';
 				}
 			},
 			onEnterBack: (_) => {
 				console.log('onLeave');
 
-				if (logoImage && themeStore) {
+				if (logoImage && $themeStore) {
 					logoImage.src = '/logo_transparente_escuro.png';
 				}
 			}
@@ -63,7 +63,7 @@
 	<Header showLogo={false} />
 	<div id="logo" class="fixed top-6 left-4 translate-x-0 translate-y-0 h-auto w-[120px] z-[999]">
 		<a class="m-2 no-underline hover:no-underline transition-none md:m-0" href="/">
-			{#if themeStore}
+			{#if $themeStore}
 				<img
 					bind:this={logoImage}
 					class="w-auto h-full"
