@@ -2,6 +2,7 @@
 	// Import components
 	import PostList from '$lib/components/PostList.svelte';
 	import Header from '$lib/components/Header.svelte';
+	import TeamPresentation from './TeamPresentation.svelte';
 	// Import types
 	import type { PageData } from './$types';
 	import { themeStore, isSmallDevice } from '$lib/stores';
@@ -14,11 +15,11 @@
 
 	let { data }: Props = $props();
 
-	// CODE FOR THE LOGO ANIMATION
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	gsap.registerPlugin(ScrollTrigger);
 
+	// CODE FOR THE LOGO ANIMATION
 	let logoImage: HTMLImageElement | undefined = $state();
 
 	onMount(() => {
@@ -51,89 +52,12 @@
 			}
 		});
 	});
-
-	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
-	// TODO: fix this
-
-	// Bounds for scroll snapping
-	let scrollSnapStartAdd: number = 120;
-	let scrollSnapStartRemove: number = 200;
-	let scrollSnapEndBound: number = 60;
-
-	onMount(() => {
-		// If we are on firefox, change the scroll snapping
-		// I dont know why this works now, nor why it didnt work before i did this. All I know is DONT REMOVE THIS
-		if (navigator.userAgent.search('Firefox') > -1) {
-			console.log('FIREFOX');
-			scrollSnapStartRemove = 119;
-			scrollSnapEndBound = 121;
-		}
-	});
-	// Element bindings
-	let scrollSnapStartMarker: HTMLElement = $state();
-	let scrollSnapEndMarker: HTMLElement = $state();
-
-	// This event is triggered when the user scrolls the main page
-	function handleScroll(e: UIEvent) {
-		// Scrolling should be client-side only, so we disable all the fancy
-		// stuff on the server to prevent  it from getting confused
-		if (import.meta.env.SSR) return;
-
-		/* Compute the small device flag only once and cache it
-		   This is currently disabled to allow changes in the smallness
-		   of a device, e.g., turning a mobile device on its side. If
-		   we decide to reenable it, maybe it should move to onMount()
-		*/
-		//if (isSmallDevice === undefined) {
-		// Update the small device flag
-		isSmallDevice.set(window.matchMedia('(max-width: 700px)').matches);
-		//console.log($isSmallDevice);
-		//}
-
-		// On small devices, scroll-snapping of the team presentation
-		// doesn't feel good, so we disable it
-		if ($isSmallDevice) {
-			console.log('Small');
-			return;
-		}
-
-		// Get the top coordinates of the snap bounds markers,
-		// relative to the viewport
-		let startY = scrollSnapStartMarker.getBoundingClientRect().top;
-		let endY = scrollSnapEndMarker.getBoundingClientRect().top;
-
-		//console.log(`startY=${startY}; endY=${endY};`);
-
-		// Get a reference to the body
-		const body = document.getElementsByTagName('html')[0];
-		// If snapping is disabled and we are inside the bounds, enable it
-		if (
-			!body.classList.contains('scrollsnap') &&
-			startY < scrollSnapStartAdd &&
-			endY > scrollSnapEndBound
-		) {
-			console.log('Adding snap at ' + startY);
-			body.classList.add('scrollsnap');
-		}
-		// If snapping is enabled and we are outside the bounds, disable it
-		if (body.classList.contains('scrollsnap') && startY > scrollSnapStartRemove) {
-			console.log('Removing snap from start at ' + startY);
-			body.classList.remove('scrollsnap');
-		}
-		if (body.classList.contains('scrollsnap') && endY < scrollSnapEndBound) {
-			console.log('Removing snap from end');
-			body.classList.remove('scrollsnap');
-		}
-	}
 </script>
-
-<!--Binds the scroll variable to the scroll of the window-->
-<svelte:window onscroll={handleScroll} />
 
 <svelte:head>
 	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
-{#if isSmallDevice}
+{#if $isSmallDevice}
 	<Header />
 {:else}
 	<Header showLogo={false} />
@@ -223,57 +147,9 @@
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		allowfullscreen
 	></iframe>
-
-	<h2 id="team">EQUIPA</h2>
-	<div class="people">
-		<!--Get a reference to the start of the scroll snapping bounds-->
-		<!--This structure is very repetitive, it might be worth it to
-		extract a component, or at least use an #each block-->
-		<div bind:this={scrollSnapStartMarker} class="person">
-			<img src="/team/rita.jpg" alt="Rita Fernandes" />
-			<div>
-				<h4>Rita Fernandes</h4>
-				<div>Coordenação & Hardware</div>
-			</div>
-		</div>
-		<div class="person">
-			<img src="/team/gabriel.jpg" alt="Gabriel Neto" />
-			<div>
-				<h4>Gabriel Neto</h4>
-				<div>Desenvolvimento Científico</div>
-			</div>
-		</div>
-		<div class="person">
-			<img src="/team/guido.jpg" alt="Guido Rezende" />
-			<div>
-				<h4>Guido Rezende</h4>
-				<div>Programação da Estação Terra</div>
-			</div>
-		</div>
-		<div class="person">
-			<img src="/team/levi.jpg" alt="Levi Gomes" />
-			<div>
-				<h4>Levi Gomes</h4>
-				<div>Programação do CanSat</div>
-			</div>
-		</div>
-		<div class="person">
-			<img src="/team/miguel.jpg" alt="Miguel Monteiro" />
-			<div>
-				<h4>Miguel Monteiro</h4>
-				<div>Paraquedas & Estrutura</div>
-			</div>
-		</div>
-		<!--Get a reference to the end of the scroll snapping bounds-->
-		<div bind:this={scrollSnapEndMarker} class="person">
-			<img src="/team/filipa.jpg" alt="Filipa Cheng" />
-			<div>
-				<h4>Filipa Cheng</h4>
-				<div>Divulgação</div>
-			</div>
-		</div>
-	</div>
-
+</main>
+<TeamPresentation />
+<main class="py-0 px-[10%] lg:px-[20%]">
 	<h2 id="blog">BLOG</h2>
 	<!--Insert the post list-->
 	<PostList postList={data.posts} />
