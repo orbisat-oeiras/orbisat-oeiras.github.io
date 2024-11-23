@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	// Import components
 	import PostList from '$lib/components/PostList.svelte';
 	// Import types
