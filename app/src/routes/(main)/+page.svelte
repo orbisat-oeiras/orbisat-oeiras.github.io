@@ -14,6 +14,44 @@
 
 	let { data }: Props = $props();
 
+	// CODE FOR THE LOGO ANIMATION
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	gsap.registerPlugin(ScrollTrigger);
+
+	let logoImage: HTMLImageElement | undefined = $state();
+
+	onMount(() => {
+		ScrollTrigger.create({
+			animation: gsap.from('#logo', {
+				top: '50vh',
+				yPercent: -50,
+				left: '50vw',
+				xPercent: -50,
+				scale: 5
+			}),
+			scrub: true,
+			trigger: 'main',
+			start: 'top bottom',
+			endTrigger: 'main',
+			end: 'top 240px',
+			onLeave: (_) => {
+				console.log('onLeave');
+
+				if (logoImage && themeStore) {
+					logoImage.src = '/logo_transparente_claro.png';
+				}
+			},
+			onEnterBack: (_) => {
+				console.log('onLeave');
+
+				if (logoImage && themeStore) {
+					logoImage.src = '/logo_transparente_escuro.png';
+				}
+			}
+		});
+	});
+
 	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 	// TODO: fix this
 
@@ -97,11 +135,17 @@
 </svelte:head>
 
 <Header showLogo={false} />
-<div class="fixed top-6 left-4 h-auto w-[120px] z-[999]">
+<div id="logo" class="fixed top-6 left-4 translate-x-0 translate-y-0 h-auto w-[120px] z-[999]">
 	<a class="m-2 no-underline hover:no-underline transition-none md:m-0" href="/">
-		<img class="w-[100%] md:h-[100%] md:w-auto md:m-0" src="/logo_transparente_claro.png" alt="" />
+		{#if themeStore}
+			<img bind:this={logoImage} class="w-auto h-full" src="/logo_transparente_escuro.png" alt="" />
+		{:else}
+			<img bind:this={logoImage} class="w-auto h-full" src="/logo_transparente_claro.png" alt="" />
+		{/if}
 	</a>
 </div>
+
+<div class="container h-[calc(100vh)]"></div>
 
 <!--The actual content of the page is wrapped inside this main,
 	which adds an adequate margin to ensure lines of text aren't
