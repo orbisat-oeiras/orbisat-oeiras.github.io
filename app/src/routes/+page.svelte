@@ -14,34 +14,6 @@
 	}
 
 	let { data }: Props = $props();
-	//THIS CODE IS RELATED TO THE ANIMATION OF THE LOGO TO THE NAVBAR
-
-	// The scroll of the window (how far it has scrolled)
-	let scroll: number = $state(0);
-	// How long we have to scroll for the animation to finish (essentially, how long is the animation takes)
-	const logoAnimationScrollAmount = 500;
-	// How much we have scrolled in the animation (0 - 50)
-	let scrollPercentage = $state(0);
-	let innerWidth: number = $state(0);
-	let innerHeight: number = $state(0);
-	// Image positioning parameters
-	let logoLeft: number = $state(0);
-	let logoTop: number = $state(0);
-	let logoWidth: number = $state(0);
-
-	function lerp(a: number, b: number, t: number): number {
-		return a + t * (b - a);
-	}
-
-	// TODO: fix this animation...
-	run(() => {
-		// Adds to the animationPercentage when we scroll and stops the animation once it is finished
-		scrollPercentage =
-			scroll >= logoAnimationScrollAmount ? 50 : scroll / (logoAnimationScrollAmount / 50);
-		logoLeft = lerp(76, innerWidth / 2, 1 - scrollPercentage * 0.02);
-		logoTop = lerp(60, 160 + 0.15 * innerWidth, 1 - scrollPercentage * 0.02);
-		logoWidth = lerp(120, innerWidth / 2, 1 - scrollPercentage * 0.02);
-	});
 
 	// THIS CODE IS RELATED TO SNAPPING TO THE TEAM PRESENTATION
 	// TODO: fix this
@@ -119,35 +91,12 @@
 </script>
 
 <!--Binds the scroll variable to the scroll of the window-->
-<svelte:window bind:scrollY={scroll} bind:innerWidth bind:innerHeight onscroll={handleScroll} />
+<svelte:window onscroll={handleScroll} />
 
 <svelte:head>
 	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
 
-<!--Add here a check to see if the app is running on mobile-->
-{#if !$isSmallDevice}
-	<div
-		class="fixed translate-x-[-50%] translate-y-[-50%] z-[11]"
-		style="left: {logoLeft}px; top: {logoTop}px; width: {logoWidth}px"
-	>
-		{#if scrollPercentage == 50}
-			<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
-				{#if $themeStore}
-					<img alt="logotype" src="logo_transparente_claro.png" />
-				{:else}
-					<img alt="logotype" src="logo_transparente_escuro.png" />
-				{/if}
-			</a>
-		{:else if !$themeStore || scrollPercentage >= 48}
-			<img alt="logotype" src="logo_transparente_claro.png" />
-		{:else if scrollPercentage <= 48}
-			<img alt="logotype" src="logo_transparente_escuro.png" />
-		{/if}
-	</div>
-	<!--This is literally just an empty square to push the content far enough so that we can finish the animation. There is probably a better way to do this-->
-	<div class="h-[calc(55vh+160px)]"></div>
-{/if}
 <h2 id="cansat">CANSAT</h2>
 <p>
 	O CanSat Portugal é uma competição nacional promovida pela <a href="https://www.esero.pt/"
