@@ -96,7 +96,13 @@
 	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
 
-<Header />
+<Header showLogo={false} />
+<div class="fixed top-6 left-4 h-auto w-[120px] z-[999]">
+	<a class="m-2 no-underline hover:no-underline transition-none md:m-0" href="/">
+		<img class="w-[100%] md:h-[100%] md:w-auto md:m-0" src="/logo_transparente_claro.png" alt="" />
+	</a>
+</div>
+
 <!--The actual content of the page is wrapped inside this main,
 	which adds an adequate margin to ensure lines of text aren't
 	too large-->
