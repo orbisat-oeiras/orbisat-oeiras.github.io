@@ -133,19 +133,31 @@
 <svelte:head>
 	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
-
-<Header showLogo={false} />
-<div id="logo" class="fixed top-6 left-4 translate-x-0 translate-y-0 h-auto w-[120px] z-[999]">
-	<a class="m-2 no-underline hover:no-underline transition-none md:m-0" href="/">
-		{#if themeStore}
-			<img bind:this={logoImage} class="w-auto h-full" src="/logo_transparente_escuro.png" alt="" />
-		{:else}
-			<img bind:this={logoImage} class="w-auto h-full" src="/logo_transparente_claro.png" alt="" />
-		{/if}
-	</a>
-</div>
-
-<div class="container h-[calc(100vh)]"></div>
+{#if isSmallDevice}
+	<Header />
+{:else}
+	<Header showLogo={false} />
+	<div id="logo" class="fixed top-6 left-4 translate-x-0 translate-y-0 h-auto w-[120px] z-[999]">
+		<a class="m-2 no-underline hover:no-underline transition-none md:m-0" href="/">
+			{#if themeStore}
+				<img
+					bind:this={logoImage}
+					class="w-auto h-full"
+					src="/logo_transparente_escuro.png"
+					alt=""
+				/>
+			{:else}
+				<img
+					bind:this={logoImage}
+					class="w-auto h-full"
+					src="/logo_transparente_claro.png"
+					alt=""
+				/>
+			{/if}
+		</a>
+	</div>
+	<div class="container h-[calc(100vh)]"></div>
+{/if}
 
 <!--The actual content of the page is wrapped inside this main,
 	which adds an adequate margin to ensure lines of text aren't
