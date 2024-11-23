@@ -95,6 +95,10 @@
 	<title>OrbiSat Oeiras 24</title>
 </svelte:head>
 
+<!--The actual content of the page is wrapped inside this main,
+	which adds an adequate margin to ensure lines of text aren't
+	too large-->
+<main class="py-0 px-[10%] lg:px-[20%]">
 <h2 id="cansat">CANSAT</h2>
 <p>
 	O CanSat Portugal é uma competição nacional promovida pela <a href="https://www.esero.pt/"
@@ -221,3 +225,4 @@
 <!--The text just ended right at the bottom of the page, and it looked odd,
 	so this adds some empty space-->
 <div class="py-12"></div>
+</main>
