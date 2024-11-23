@@ -6,6 +6,8 @@
 	import { isSmallDevice } from '$lib/stores';
 	import { onMount } from 'svelte';
 
+	let { showLogo = true } = $props();
+
 	onMount(() => {
 		// TODO: Why is this here??
 		isSmallDevice.set(window.matchMedia('(max-width: 700px)').matches);
@@ -17,11 +19,8 @@
 	class="bg-invariant-bg text-invariant-fg dark:bg-invariant-bg dark:text-invariant-fg flex flex-col items-center justify-between md:flex-row md:justify-between md:content-center py-6 px-4 md:sticky top-0 z-10 [&>*]:h-min"
 	style={$isSmallDevice ? 'margin-bottom: 40px' : ''}
 >
-	<!--Add here a check to see if the app is running on mobile and to see if we are on the archive-->
-	<!--TODO: Why??-->
-	{#if $isSmallDevice || $page.url.pathname != '/24'}
+	{#if showLogo}
 		<a class="m-2 no-underline hover:no-underline transition-none md:m-0 md:w-[120px]" href="/">
-			<!--<h2 class="no-underline text-grey-900 not-italic">How I Made A Game</h2>-->
 			<img class="w-[90%] md:h-[100%] md:w-auto md:m-0" src="/logo_transparente_claro.png" alt="" />
 		</a>
 	{:else}
