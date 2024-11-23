@@ -49,12 +49,12 @@
 				></a
 			>
 		</Dropdown>-->
-		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#cansat">CanSat</a>
-		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#project">Projeto</a>
-		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#team">Equipa</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/#cansat">CanSat</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/#project">Projeto</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/#team">Equipa</a>
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
-		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#blog">Blog</a>
-		<a class="text-invariant-fg dark:text-invariant-fg" href="/24#sponsor">Apoios</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/#blog">Blog</a>
+		<a class="text-invariant-fg dark:text-invariant-fg" href="/#sponsor">Apoios</a>
 		<ThemeToggle />
 	</div>
 </nav>
