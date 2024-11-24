@@ -6,5 +6,6 @@ export type Post = {
 	cover_image: string;
 	cover_image_exists: boolean;
 	excerpt: string;
+	hidden: boolean;
 	content: string | never;
 };

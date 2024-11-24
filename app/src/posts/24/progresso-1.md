@@ -3,6 +3,7 @@ title: '(Q raio é q eu ponho no título??)'
 date: '10/3/2024'
 cover_image: 'team/equipa.jpg'
 excerpt: '(Sugestões pra descrição tbm são bem-vindas, mas qlqr coisa eu desenrasco-me)'
+hidden: true
 ---
 
 Este último mês foi cheio de trabalho. Vamos espreitar o que a nossa equipa tem andado a fazer!

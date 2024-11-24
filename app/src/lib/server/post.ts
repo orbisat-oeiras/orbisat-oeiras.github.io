@@ -20,7 +20,8 @@ export function getPostList(limit = -1): Post[] {
 		// sub folders
 		const postPaths = glob.sync('./src/posts/**/*.md');
 		// Get a Post object for each path
-		const posts = postPaths.map((path) => postFromPath(path));
+		let posts = postPaths.map((path) => postFromPath(path));
+		posts = posts.filter((post) => !post.hidden);
 		// Sort the posts and cache them
 		cachedPostList = sortPostsByDate(posts);
 	}
@@ -34,6 +35,7 @@ export function postFromPath(path: string) {
 	const file = fs.readFileSync(path);
 	// Parse the frontmatter
 	const parsed = matter(file);
+
 	// The Date constructor expects an American style string,
 	// but ours is European style, so we need to do some juggling
 	const splitDate = (parsed.data['date'] as string).split('/');
@@ -47,6 +49,7 @@ export function postFromPath(path: string) {
 		cover_image: parsed.data['cover_image'] as string,
 		cover_image_exists: fs.existsSync(process.cwd() + '/static/' + parsed.data['cover_image']),
 		excerpt: parsed.data['excerpt'] as string,
+		hidden: 'hidden' in parsed.data,
 		content: parsed.content
 	} as Post;
 }
