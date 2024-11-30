@@ -11,7 +11,12 @@ import matter from 'gray-matter';
 // a big performance cost
 let cachedPostList: Post[] | undefined = undefined;
 
-export function getPostList(limit = -1): Post[] {
+type PostListOptions = {
+	limit?: number;
+	year?: number;
+};
+
+export function getPostList(options: PostListOptions = {}): Post[] {
 	if (!cachedPostList) {
 		// Just a sanity check to make sure caching is working properly
 		console.log('COMPUTE POST LIST');
@@ -25,9 +30,11 @@ export function getPostList(limit = -1): Post[] {
 		// Sort the posts and cache them
 		cachedPostList = sortPostsByDate(posts);
 	}
-	// Optionally trim the post list
-	if (limit === -1) return cachedPostList;
-	else return cachedPostList.slice(0, limit);
+	// Apply options
+	let postList = cachedPostList;
+	if (options.year) postList = postList.filter((post) => post.date.getFullYear() === options.year);
+	if (options.limit) postList = postList.slice(0, options.limit);
+	return postList;
 }
 
 export function postFromPath(path: string) {
