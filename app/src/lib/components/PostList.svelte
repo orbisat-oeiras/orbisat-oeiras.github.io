@@ -42,11 +42,9 @@
 {#if postList.length >= 1}
 	<div class="flex overflow-hidden justify-between w-full">
 		<button
-			class="text-light-ui-fg dark:text-dark-ui-fg rounded-none rounded-l border-none p-4 {scroll_left ==
-			0
-				? 'bg-light-ui-muted dark:bg-dark-ui-muted'
-				: 'bg-light-ui-bg dark:bg-dark-ui-bg'}"
+			class="text-light-ui-fg dark:text-dark-ui-fg rounded-none rounded-l border-none p-4 bg-light-ui-bg dark:bg-dark-ui-bg disabled:bg-light-ui-muted disabled:dark:bg-dark-ui-muted"
 			onpointerdown={left}
+			disabled={scroll_left === 0}
 		>
 			{#if left_button}{@render left_button()}{:else}&lt;{/if}
 		</button>
@@ -61,12 +59,10 @@
 			{/each}
 		</div>
 		<button
-			class="text-light-ui-fg dark:text-dark-ui-fg rounded-none rounded-r border-none p-4 {Math.abs(
-				scroll_left + current_width - scroll_width
-			) < 3
-				? 'bg-light-ui-muted dark:bg-dark-ui-muted'
-				: 'bg-light-ui-bg dark:bg-dark-ui-bg'}"
+			class="text-light-ui-fg dark:text-dark-ui-fg rounded-none rounded-r border-none p-4 bg-light-ui-bg dark:bg-dark-ui-bg disabled:bg-light-ui-muted disabled:dark:bg-dark-ui-muted"
 			onpointerdown={right}
+			disabled={Math.round(scroll_left / current_width) ===
+				Math.round(scroll_width / current_width) - 1 || postList.length === 1}
 		>
 			{#if right_button}{@render right_button()}{:else}&gt;{/if}
 		</button>
