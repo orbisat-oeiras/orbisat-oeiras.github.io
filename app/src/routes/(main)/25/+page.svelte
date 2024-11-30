@@ -2,7 +2,7 @@
 	// Import components
 	import PostList from '$lib/components/PostList.svelte';
 	import Header from '$lib/components/Header.svelte';
-	import TeamPresentation from './TeamPresentation.svelte';
+	import TeamPresentation from '../TeamPresentation.svelte';
 	// Import types
 	import type { PageData } from './$types';
 	import { themeStore, isSmallDevice } from '$lib/stores';
@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-	<title>OrbiSat Oeiras 24</title>
+	<title>OrbiSat Oeiras 25</title>
 </svelte:head>
 {#if $isSmallDevice}
 	<Header />
