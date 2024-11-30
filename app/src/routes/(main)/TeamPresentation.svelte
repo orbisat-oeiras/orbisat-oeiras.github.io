@@ -27,7 +27,7 @@
 				pin: true, // Pin the section
 				scrub: true, // Smooth scrolling
 				onLeave: () => {
-					if (index < sections.length - 1) {
+					if (false && index < sections.length - 1) {
 						// Smooth scroll to next section after unpinning
 						gsap.to(window, {
 							scrollTo: sections[index + 1], // Scroll to the next section
@@ -37,7 +37,7 @@
 					}
 				},
 				onLeaveBack: () => {
-					if (index > 0) {
+					if (false && index > 0) {
 						// Smooth scroll back to previous section when coming back up
 						gsap.to(window, {
 							scrollTo: sections[index - 1], // Scroll back to previous section
