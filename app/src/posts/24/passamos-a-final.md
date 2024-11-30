@@ -1,7 +1,7 @@
 ---
 title: 'ESTAMOS NA FINAL!'
 date: '30/1/2024'
-cover_image: 'team/equipa.jpg'
+cover_image: 'team/24/equipa.jpg'
 excerpt: 'Agora, temos de mostrar que o merecemos!'
 ---
 

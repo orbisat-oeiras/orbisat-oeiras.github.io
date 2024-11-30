@@ -1,7 +1,7 @@
 ---
 title: '(Q raio é q eu ponho no título??)'
 date: '10/3/2024'
-cover_image: 'team/equipa.jpg'
+cover_image: 'team/24/equipa.jpg'
 excerpt: '(Sugestões pra descrição tbm são bem-vindas, mas qlqr coisa eu desenrasco-me)'
 hidden: true
 ---
