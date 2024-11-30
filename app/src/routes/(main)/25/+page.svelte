@@ -8,6 +8,16 @@
 	import { themeStore, isSmallDevice } from '$lib/stores';
 	import { onMount } from 'svelte';
 
+	// Team data
+	const teamMembers = [
+		{ src: '/team/rita.jpg', name: 'Rita Fernandes', desc: 'Coordenação & Hardware' },
+		{ src: '/team/gabriel.jpg', name: 'Gabriel Neto', desc: 'Desenvolvimento Científico' },
+		{ src: '/team/guido.jpg', name: 'Guido Rezende', desc: 'Programação da Estação Terra' },
+		{ src: '/team/levi.jpg', name: 'Levi Gomes', desc: 'Programação do CanSat' },
+		{ src: '/team/miguel.jpg', name: 'Miguel Monteiro', desc: 'Paraquedas & Estrutura' },
+		{ src: '/team/filipa.jpg', name: 'Filipa Cheng', desc: 'Divulgação' }
+	];
+
 	interface Props {
 		// Data provided by the server load function
 		data: PageData;
@@ -104,39 +114,8 @@
 		do ar e da pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a
 		estação terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
 	</p>
-	<h3 id="objective">OBJETIVO CIENTÍFICO</h3>
-	<p>
-		O objetivo científico do nosso projeto é recolher dados sobre a saúde e densidade da vegetação
-		na área que o CanSat sobrevoar. Esses dados podem ser usados para ajudar agricultores e outras
-		entidades, fornecendo-lhes informação relevante. Para obter estes dados, iremos calcular o <em
-			>Normalized Difference Vegetation Index</em
-		>
-		(NDVI), tendo por base o estudo da NASA
-		<a href="https://core.ac.uk/download/pdf/42863365.pdf"
-			>"Using Landsat Digital Data for Estimating Green Biomass”</a
-		>, realizado por D. W. Deering e Robert H. Haas.
-	</p>
 	<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
-	<p>
-		Para realizar o objetivo a que nos propomos, o nosso CanSat irá usar uma câmera para captar
-		imagens da área sobrevoada. Esta câmera será modificada para permitir a captação de luz vermelha
-		e infravermelha numa só imagem. Decidimos usar esta técnica pois permite obter excelentes
-		resultados, como confirmámos através do estudo de Gilles Rabatel <em>et al.</em>
-		<a href="https://hal.science/hal-00648439/document"
-			>"Getting NDVI spectral bands from a single standard RGB digital camera: a methodological
-			approach"</a
-		>
-		As imagens captadas serão enviadas para a estação terra, onde um
-		<!--
-		<em
-		class="underline decoration-dashed"
-		title="Aplicação que mostra os dados recolhidos e processados, organizados de modo a facilitar a sua
-			interpretação.">dashboard</em
-		>
-	-->
-		<em>dashboard</em>
-		irá processá-las para calcular o NDVI.
-	</p>
+	<p>TODO</p>
 
 	<h2 id="video">VIDEO</h2>
 	<iframe
@@ -149,7 +128,7 @@
 	></iframe>
 	<h2 id="team" class="mb-[-80px]">EQUIPA</h2>
 </main>
-<TeamPresentation />
+<TeamPresentation {teamMembers} />
 <main class="py-0 px-[10%] lg:px-[20%]">
 	<h2 id="blog">BLOG</h2>
 	<!--Insert the post list-->

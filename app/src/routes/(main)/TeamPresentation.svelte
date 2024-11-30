@@ -6,14 +6,11 @@
 
 	gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-	const teamMembers = [
-		{ src: '/team/rita.jpg', name: 'Rita Fernandes', desc: 'Coordenação & Hardware' },
-		{ src: '/team/gabriel.jpg', name: 'Gabriel Neto', desc: 'Desenvolvimento Científico' },
-		{ src: '/team/guido.jpg', name: 'Guido Rezende', desc: 'Programação da Estação Terra' },
-		{ src: '/team/levi.jpg', name: 'Levi Gomes', desc: 'Programação do CanSat' },
-		{ src: '/team/miguel.jpg', name: 'Miguel Monteiro', desc: 'Paraquedas & Estrutura' },
-		{ src: '/team/filipa.jpg', name: 'Filipa Cheng', desc: 'Divulgação' }
-	];
+	interface Props {
+		teamMembers: { src: string; name: string; desc: string }[];
+	}
+
+	let { teamMembers }: Props = $props();
 
 	onMount(() => {
 		const sections = document.querySelectorAll('.team-member');
@@ -60,7 +57,7 @@
 			<div class="shrink-0 h-[120px]"></div>
 			{#if i % 2 === 0}
 				<div class="grow flex flex-row items-center">
-					<!--svelte-ignore a11y-missing-attribute-->
+					<!--svelte-ignore a11y_missing_attribute-->
 					<img src={member.src} class="h-[calc(100vh_-_120px)]" />
 					<div class="w-1/2 flex flex-col items-start pl-10">
 						<!-- svelte-ignore a11y_missing_attribute-->
@@ -70,7 +67,7 @@
 				</div>
 			{:else}
 				<div class="grow flex flex-row-reverse items-center">
-					<!--svelte-ignore a11y-missing-attribute-->
+					<!--svelte-ignore a11y_missing_attribute-->
 					<img src={member.src} class="h-[calc(100vh_-_120px)]" />
 					<div class="w-1/2 flex flex-col items-end pr-10">
 						<!-- svelte-ignore a11y_missing_attribute-->
@@ -82,10 +79,3 @@
 		</section>
 	{/each}
 </div>
-
-<!--
-<img
-					class="object-cover relative w-auto md:right-[10vw] lg:right-[20vw] self-center h-screen"
-					src={member.src}
-				/>
--->
