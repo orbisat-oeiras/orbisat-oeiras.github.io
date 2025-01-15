@@ -31,9 +31,10 @@
 
 	// CODE FOR THE LOGO ANIMATION
 	let logoImage: HTMLImageElement | undefined = $state();
+	let trigger: ScrollTrigger | undefined = $state();
 
 	onMount(() => {
-		ScrollTrigger.create({
+		trigger = ScrollTrigger.create({
 			animation: gsap.from('#logo', {
 				top: '50vh',
 				yPercent: -50,
@@ -73,7 +74,7 @@
 	<Header showLogo={false} />
 	<div id="logo" class="fixed top-6 left-4 translate-x-0 translate-y-0 h-auto w-[120px] z-[999]">
 		<a class="m-2 no-underline hover:no-underline transition-none md:m-0" href="/">
-			{#if $themeStore}
+			{#if $themeStore && (!trigger?.progress || trigger.progress < 1)}
 				<img
 					bind:this={logoImage}
 					class="w-auto h-full"
