@@ -36,7 +36,7 @@
 	onMount(() => {
 		trigger = ScrollTrigger.create({
 			animation: gsap.from('#logo', {
-				top: '50vh',
+				top: '55vh',
 				yPercent: -50,
 				left: '50vw',
 				xPercent: -50,
@@ -98,6 +98,31 @@
 	which adds an adequate margin to ensure lines of text aren't
 	too large-->
 <main class="py-0 px-[10%] lg:px-[20%]">
+	<h1 id="intro">VELOCIDADE DO SOM</h1>
+	<div>
+		Com o nosso CanSat, vamos estudar a <strong>velocidade do som</strong>! Vejam o vídeo de
+		apresentação para descobrirem como e proquê:
+	</div>
+
+	<!--TODO: change this to true when the video is published-->
+	{#if false}
+		<iframe
+			id="video"
+			class="pb-10 w-full aspect-[4/3] md:aspect-video"
+			src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allowfullscreen
+		></iframe>
+	{:else}
+		<div
+			id="video"
+			class="pb-10 w-full aspect-[4/3] md:aspect-video content-center text-center loading"
+		>
+			DISPONÍVEL EM BREVE
+		</div>
+	{/if}
 	<h2 id="cansat">CANSAT</h2>
 	<p>
 		O CanSat Portugal é uma competição nacional promovida pela <a href="https://www.esero.pt/"
@@ -116,17 +141,26 @@
 		estação terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
 	</p>
 	<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
-	<p>TODO</p>
-
-	<h2 id="video">VIDEO</h2>
-	<iframe
-		class="pb-10 w-full aspect-[4/3] md:aspect-video"
-		src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
-		title="YouTube video player"
-		frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-		allowfullscreen
-	></iframe>
+	<p>
+		A missão secundária do nosso CanSat será medir a velocidade do som, permitindo-nos relacioná-la
+		com outros parâmetros, tais como a altitude, a temperatura do ar e a pressão atmosférica, e
+		criar modelos matemáticos que descrevam o seu comportamento.
+	</p>
+	<p>
+		O dispositivo principal do CanSat será um tubo de ressonância, que irá filtrar acusticamente
+		ruído branco emitido por um altifalante, sendo o sinal resultante captado por um microfone. A
+		análise deste sinal revelará as frequências que o constituem em função do tempo. Podemos
+		utilizar estas frequências, assim como informações sobre a forma e dimensões do tubo, para
+		calcular a velocidade do som. Finalmente, conjugando-a com outros dados recolhidos pelo CanSat,
+		faremos um estudo mais aprofundado.
+	</p>
+	<p>
+		O CanSat será desenvolvido como um instrumento científico, de pequenas dimensões, fácil
+		utilização e baixo custo, que possa ser usado por equipas de investigadores e especialistas no
+		estudo da velocidade do som. O conhecimento sobre a relação desta grandeza com outros parâmetros
+		pode ter grande relevância para o estudo da aerodinâmica, e em especial no setor aeroespacial,
+		podendo mesmo ter um impacto revolucionário!
+	</p>
 	<h2 id="team" class="mb-[-80px]">EQUIPA</h2>
 </main>
 <TeamPresentation {teamMembers} />
@@ -135,15 +169,58 @@
 	<!--Insert the post list-->
 	<PostList postList={data.posts} />
 
-	<h2 class="pt-10" id="sponsor">Com o apoio de:</h2>
-	<div class="flex flex-col gap-y-20 [&>*]:w-5/6 [&>*]:md:w-1/2 items-center">
-		<img src="/logos/clube2.png" alt="Clube de Ciências ESSS" />
-		<img src="/logos/aesjb.png" alt="Agrupamento de Escolas São Julião da Barra" />
-		<img src="/logos/inovlabs.png" alt="InovLabs" />
-		<img src="/logos/valley.png" alt="Oeiras Valley" />
+	<h2 class="pt-10 justify-self-center" id="sponsor">Com o apoio de:</h2>
+	<div class="grid grid-cols-2 gap-8">
+		<img
+			class="col-span-1 justify-self-center self-center"
+			src="/logos/clube2.png"
+			alt="Clube de Ciências ESSS"
+		/>
+		<img
+			class="col-span-1 justify-self-center self-center w-4/5"
+			src="/logos/aesjb.png"
+			alt="Agrupamento de Escolas São Julião da Barra"
+		/>
+		<img
+			class="col-span-1 justify-self-center self-center"
+			src="/logos/inovlabs.png"
+			alt="InovLabs"
+		/>
+		<img
+			class="col-span-1 justify-self-center self-center w-1/3"
+			src="/logos/valley.png"
+			alt="Oeiras Valley"
+		/>
 	</div>
 
 	<!--The text just ended right at the bottom of the page, and it looked odd,
 	so this adds some empty space-->
 	<div class="py-12"></div>
 </main>
+
+<style>
+	.loading::after {
+		display: inline-block;
+		position: relative;
+		animation: dotty steps(1, end) 2s infinite;
+		content: '';
+	}
+
+	@keyframes dotty {
+		0% {
+			content: '\00a0\00a0\00a0';
+		}
+		25% {
+			content: '.\00a0\00a0';
+		}
+		50% {
+			content: '..\00a0';
+		}
+		75% {
+			content: '...';
+		}
+		100% {
+			content: '\00a0\00a0\00a0';
+		}
+	}
+</style>
