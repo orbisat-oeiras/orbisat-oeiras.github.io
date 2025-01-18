@@ -105,14 +105,15 @@
 	</div>
 
 	<!--TODO: change this to true when the video is published-->
-	{#if false}
+	{#if true}
 		<iframe
 			id="video"
-			class="pb-10 w-full aspect-[4/3] md:aspect-video"
-			src="https://www.youtube.com/embed/XplWaGhc1hQ?si=wIz4CanoSUktHEsP"
+			class="pt-10 pb-10 w-full aspect-[4/3] md:aspect-[4/3]"
+			src="https://www.youtube.com/embed/DRvx05wEGMg?si=1CDvsnztSJcklKcG"
 			title="YouTube video player"
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen
 		></iframe>
 	{:else}
