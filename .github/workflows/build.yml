@@ -1,6 +1,8 @@
-name: Build site to test PRs
+name: Build site
 
-on: pull_request
+on:
+  pull_request:
+  workflow_call:
 
 jobs:
   build_site:
@@ -12,15 +14,20 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 22
           #cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --force
 
-      - name: build
+      - name: Build
         env:
-          BASE_PATH: '/levimcgomes.github.io'
+          BASE_PATH: '/orbisat-oeiras.github.io'
         run: |
           npm run build
           touch build/.nojekyll
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './build/'
