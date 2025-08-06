@@ -7,12 +7,12 @@ on:
   repository_dispatch:
     types: ['orbipacket-deploy']
 
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
 jobs:
-  build_site:
-    uses: ./.github/workflows/build.yml
-    secrets: inherit
   deploy:
-    needs: build_site
     runs-on: ubuntu-latest
 
     permissions:
@@ -24,6 +24,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: sveltekit
+
+      - name: Build Site
+        uses: ./.github/actions/build
+        with:
+          orbipacket_token: ${{ secrets.ORBIPACKET_ACTIONS_TOKEN }}
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
