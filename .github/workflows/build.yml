@@ -20,6 +20,15 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
+      - name: Download OrbiPacket pdfs
+        uses: dawidd6/action-download-artifact@v11
+        with:
+          github_token: ${{ secrets.ORBIPACKET_ACTIONS_TOKEN }}
+          repo: orbisat-oeiras/orbipacket
+          workflow: build.yml
+          name: orbipacket-pdfs
+          path: './static/orbipacket/'
+
       - name: Build
         env:
           BASE_PATH: '/orbisat-oeiras.github.io'
