@@ -11,32 +11,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Build Site
+        uses: ./.github/actions/build
         with:
-          node-version: 22
-          #cache: npm
-
-      - name: Install dependencies
-        run: npm install --force
-
-      - name: Download OrbiPacket pdfs
-        uses: dawidd6/action-download-artifact@v11
-        with:
-          github_token: ${{ secrets.ORBIPACKET_ACTIONS_TOKEN }}
-          repo: orbisat-oeiras/orbipacket
-          workflow: build.yml
-          name: orbipacket-pdfs
-          path: './static/orbipacket/'
-
-      - name: Build
-        env:
-          BASE_PATH: '/orbisat-oeiras.github.io'
-        run: |
-          npm run build
-          touch build/.nojekyll
+          orbipacket_token: ${{ secrets.ORBIPACKET_ACTIONS_TOKEN }}
 
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: './build/'
