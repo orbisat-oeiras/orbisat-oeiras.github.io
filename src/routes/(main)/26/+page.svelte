@@ -10,12 +10,12 @@
 
 	// Team data
 	const teamMembers = [
-		{ src: '/team/25/levi.jpg', name: 'Levi Gomes', desc: 'Coordenação & Firmware' },
-		{ src: '/team/25/antonio.jpg', name: 'António Marques', desc: 'Eletrónica' },
-		{ src: '/team/25/gustavo.jpg', name: 'Gustavo Carmo', desc: 'Estrutura & Divulgação' },
-		{ src: '/team/25/diogo.jpg', name: 'Diogo Ribeiro', desc: 'Paraquedas & Recuperação' },
-		{ src: '/team/25/marcelo.jpg', name: 'Marcelo Lago', desc: 'Groundstation' },
-		{ src: '/team/25/rodrigo.jpg', name: 'Rodrigo Ferreira', desc: 'Telecomunicações' }
+		{ src: '/team/26/levi.jpg', name: 'Levi Gomes', desc: 'Coordenação e Firmware' },
+		{ src: '/team/26/nimai.jpg', name: 'Nimai Periard', desc: 'Eletrónica' },
+		{ src: '/team/26/gustavo.jpg', name: 'Gustavo Carmo', desc: 'Estrutura e Divulgação' },
+		{ src: '/team/26/filipa.jpg', name: 'Filipa Galveias', desc: 'Paraquedas e Divulgação' },
+		{ src: '/team/26/marcelo.jpg', name: 'Marcelo Lago', desc: 'Groundstation e Análise de Dados' },
+		{ src: '/team/26/filipe.jpg', name: 'Filipe Proença', desc: 'Telecomunicações' }
 	];
 
 	interface Props {
