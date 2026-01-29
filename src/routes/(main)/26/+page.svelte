@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Import components
-	import PostList from '$lib/components/PostList.svelte';
+	// import PostList from '$lib/components/PostList.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import TeamPresentation from '../TeamPresentation.svelte';
 	// Import types
@@ -66,7 +66,7 @@
 </script>
 
 <svelte:head>
-	<title>OrbiSat Oeiras 25</title>
+	<title>OrbiSat Oeiras 2026</title>
 </svelte:head>
 {#if $isSmallDevice}
 	<Header />
@@ -109,7 +109,7 @@
 		<iframe
 			id="video"
 			class="pt-10 pb-10 w-full aspect-[4/3] md:aspect-[4/3]"
-			src="https://www.youtube.com/embed/DRvx05wEGMg?si=1CDvsnztSJcklKcG"
+			src="https://www.youtube.com/embed/b39vG_W2ZPM?si=ajcKkq7EyRDZXASZ"
 			title="YouTube video player"
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -138,22 +138,25 @@
 	<h3 id="mission1">MISSÃO PRIMÁRIA</h3>
 	<p>
 		A missão primária, definida pela organização da competição, consiste na medição da temperatura
-		do ar e da pressão atmosférica durante o voo do CanSat, da transmissão destes dados para a
+		do ar e da pressão atmosférica durante o voo do CanSat, na transmissão destes dados para a
 		estação terra por telemetria, de 1 em 1 segundo, e ainda na análise destes dados.
 	</p>
 	<h3 id="mission2">MISSÃO SECUNDÁRIA</h3>
 	<p>
-		A missão secundária do nosso CanSat será medir a velocidade do som, permitindo-nos relacioná-la
-		com outros parâmetros, tais como a altitude, a temperatura do ar e a pressão atmosférica, e
-		criar modelos matemáticos que descrevam o seu comportamento.
+		A missão secundária do nosso CanSat será medir a velocidade do som continuamente ao longo da
+		queda, permitindo-nos relacioná-la com outros parâmetros, tais como a altitude, a temperatura do
+		ar, a pressão atmosférica, e a humidade, e criar modelos matemáticos que descrevam o seu
+		comportamento.
 	</p>
 	<p>
-		O dispositivo principal do CanSat será um tubo de ressonância, que irá filtrar acusticamente
-		ruído branco emitido por um altifalante, sendo o sinal resultante captado por um microfone. A
-		análise deste sinal revelará as frequências que o constituem em função do tempo. Podemos
-		utilizar estas frequências, assim como informações sobre a forma e dimensões do tubo, para
-		calcular a velocidade do som. Finalmente, conjugando-a com outros dados recolhidos pelo CanSat,
-		faremos um estudo mais aprofundado.
+		O dispositivo principal do CanSat será um tubo de ressonância, que irá filtrar acusticamente um
+		sinal de varrimento de frequências emitido por um altifalante, sendo o sinal resultante captado
+		por um microfone. A frequência de ressonância do tubo será amplificada por este, enquanto que as
+		restantes serão atenuadas. Deste modo, podemos, recorrendo à análise das frequências presentes
+		no sinal captado, determinar a frequência de ressonância. O valor obtido é usado para calcular a
+		velocidade do som, uma vez que depende desta, assim como do comprimento do tubo. Finalmente,
+		conjugando-a com outros dados recolhidos pelo CanSat, faremos um estudo mais aprofundado da
+		velocidade do som.
 	</p>
 	<p>
 		O CanSat será desenvolvido como um instrumento científico, de pequenas dimensões, fácil
@@ -166,9 +169,9 @@
 </main>
 <TeamPresentation {teamMembers} />
 <main class="py-0 px-[10%] lg:px-[20%]">
-	<h2 id="blog">BLOG</h2>
+	<!-- <h2 id="blog">BLOG</h2> -->
 	<!--Insert the post list-->
-	<PostList postList={data.posts} />
+	<!-- <PostList postList={data.posts} /> -->
 
 	<h2 class="pt-10 justify-self-center" id="sponsor">Com o apoio de:</h2>
 	<div class="grid grid-cols-2 gap-8">
