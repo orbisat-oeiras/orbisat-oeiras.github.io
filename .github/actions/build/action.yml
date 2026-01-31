@@ -1,11 +1,6 @@
 name: Build Site
 description: 'Build the site'
 
-inputs:
-  orbipacket_token:
-    required: true
-    description: 'GitHub token to download artifacts from OrbiPacket'
-
 runs:
   using: composite
   steps:

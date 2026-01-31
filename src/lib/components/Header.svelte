@@ -6,7 +6,7 @@
 	import { isSmallDevice } from '$lib/stores';
 	import { onMount } from 'svelte';
 
-	let { showLogo = true } = $props();
+	let { showLogo = true, showBlog = false } = $props();
 
 	onMount(() => {
 		// TODO: Why is this here??
@@ -53,7 +53,9 @@
 		<a class="text-invariant-fg dark:text-invariant-fg" href="/#project">Projeto</a>
 		<a class="text-invariant-fg dark:text-invariant-fg" href="/#team">Equipa</a>
 		<!--<a class="text-grey-900" href="/24/about">Sobre</a>-->
-		<a class="text-invariant-fg dark:text-invariant-fg" href="/#blog">Blog</a>
+		{#if showBlog}
+			<a class="text-invariant-fg dark:text-invariant-fg" href="/#blog">Blog</a>
+		{/if}
 		<a class="text-invariant-fg dark:text-invariant-fg" href="/#sponsor">Apoios</a>
 		<ThemeToggle />
 	</div>

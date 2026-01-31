@@ -32,8 +32,6 @@ jobs:
 
       - name: Build Site
         uses: ./.github/actions/build
-        with:
-          orbipacket_token: ${{ secrets.ORBIPACKET_ACTIONS_TOKEN }}
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
