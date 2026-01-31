@@ -108,7 +108,7 @@
 	{#if true}
 		<iframe
 			id="video"
-			class="pt-10 pb-10 w-full aspect-[4/3] md:aspect-[4/3]"
+			class="mt-10 mb-10 w-full aspect-[16/9] md:aspect-[16/9]"
 			src="https://www.youtube.com/embed/b39vG_W2ZPM?si=ajcKkq7EyRDZXASZ"
 			title="YouTube video player"
 			frameborder="0"
