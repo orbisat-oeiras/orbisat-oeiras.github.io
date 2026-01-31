@@ -101,7 +101,7 @@
 	<h1 id="intro">VELOCIDADE DO SOM</h1>
 	<div>
 		Com o nosso CanSat, vamos estudar a <strong>velocidade do som</strong>! Vejam o vídeo de
-		apresentação para descobrirem como e proquê:
+		apresentação para descobrirem como e porquê:
 	</div>
 
 	<!--TODO: change this to true when the video is published-->
